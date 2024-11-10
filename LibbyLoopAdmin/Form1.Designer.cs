@@ -40,9 +40,13 @@
             this.Borrowedlistbtn = new System.Windows.Forms.Button();
             this.ReservationBtn = new System.Windows.Forms.Button();
             this.Accountbtn = new System.Windows.Forms.Button();
-            this.editBookUC1 = new LibbyLoopAdmin.EditBookUC();
-            this.addBookUC1 = new LibbyLoopAdmin.AddBookUC();
             this.homeUC1 = new LibbyLoopAdmin.HomeUC();
+            this.addBookUC1 = new LibbyLoopAdmin.AddBookUC();
+            this.editBookUC1 = new LibbyLoopAdmin.EditBookUC();
+            this.bookListUC1 = new LibbyLoopAdmin.BookListUC();
+            this.borrowedListUC1 = new LibbyLoopAdmin.BorrowedListUC();
+            this.reserveUC1 = new LibbyLoopAdmin.ReserveUC();
+            this.accountUC1 = new LibbyLoopAdmin.AccountUC();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -186,6 +190,7 @@
             this.Booklistbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Booklistbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Booklistbtn.UseVisualStyleBackColor = true;
+            this.Booklistbtn.Click += new System.EventHandler(this.Booklistbtn_Click);
             // 
             // Borrowedlistbtn
             // 
@@ -205,6 +210,7 @@
             this.Borrowedlistbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Borrowedlistbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Borrowedlistbtn.UseVisualStyleBackColor = true;
+            this.Borrowedlistbtn.Click += new System.EventHandler(this.Borrowedlistbtn_Click);
             // 
             // ReservationBtn
             // 
@@ -224,6 +230,7 @@
             this.ReservationBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ReservationBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ReservationBtn.UseVisualStyleBackColor = true;
+            this.ReservationBtn.Click += new System.EventHandler(this.ReservationBtn_Click);
             // 
             // Accountbtn
             // 
@@ -243,27 +250,57 @@
             this.Accountbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Accountbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Accountbtn.UseVisualStyleBackColor = true;
-            // 
-            // editBookUC1
-            // 
-            this.editBookUC1.Location = new System.Drawing.Point(206, 35);
-            this.editBookUC1.Name = "editBookUC1";
-            this.editBookUC1.Size = new System.Drawing.Size(795, 565);
-            this.editBookUC1.TabIndex = 4;
-            // 
-            // addBookUC1
-            // 
-            this.addBookUC1.Location = new System.Drawing.Point(206, 35);
-            this.addBookUC1.Name = "addBookUC1";
-            this.addBookUC1.Size = new System.Drawing.Size(795, 565);
-            this.addBookUC1.TabIndex = 5;
+            this.Accountbtn.Click += new System.EventHandler(this.Accountbtn_Click);
             // 
             // homeUC1
             // 
             this.homeUC1.Location = new System.Drawing.Point(206, 35);
             this.homeUC1.Name = "homeUC1";
             this.homeUC1.Size = new System.Drawing.Size(795, 565);
-            this.homeUC1.TabIndex = 6;
+            this.homeUC1.TabIndex = 10;
+            // 
+            // addBookUC1
+            // 
+            this.addBookUC1.Location = new System.Drawing.Point(206, 35);
+            this.addBookUC1.Name = "addBookUC1";
+            this.addBookUC1.Size = new System.Drawing.Size(795, 565);
+            this.addBookUC1.TabIndex = 9;
+            // 
+            // editBookUC1
+            // 
+            this.editBookUC1.Location = new System.Drawing.Point(206, 35);
+            this.editBookUC1.Name = "editBookUC1";
+            this.editBookUC1.Size = new System.Drawing.Size(795, 565);
+            this.editBookUC1.TabIndex = 8;
+            // 
+            // bookListUC1
+            // 
+            this.bookListUC1.Location = new System.Drawing.Point(206, 35);
+            this.bookListUC1.Name = "bookListUC1";
+            this.bookListUC1.Size = new System.Drawing.Size(795, 565);
+            this.bookListUC1.TabIndex = 7;
+            // 
+            // borrowedListUC1
+            // 
+            this.borrowedListUC1.Location = new System.Drawing.Point(206, 35);
+            this.borrowedListUC1.Name = "borrowedListUC1";
+            this.borrowedListUC1.Size = new System.Drawing.Size(795, 565);
+            this.borrowedListUC1.TabIndex = 6;
+            // 
+            // reserveUC1
+            // 
+            this.reserveUC1.Location = new System.Drawing.Point(206, 35);
+            this.reserveUC1.Name = "reserveUC1";
+            this.reserveUC1.Size = new System.Drawing.Size(795, 565);
+            this.reserveUC1.TabIndex = 5;
+            // 
+            // accountUC1
+            // 
+            this.accountUC1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
+            this.accountUC1.Location = new System.Drawing.Point(206, 35);
+            this.accountUC1.Name = "accountUC1";
+            this.accountUC1.Size = new System.Drawing.Size(795, 565);
+            this.accountUC1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -274,6 +311,10 @@
             this.Controls.Add(this.homeUC1);
             this.Controls.Add(this.addBookUC1);
             this.Controls.Add(this.editBookUC1);
+            this.Controls.Add(this.bookListUC1);
+            this.Controls.Add(this.borrowedListUC1);
+            this.Controls.Add(this.reserveUC1);
+            this.Controls.Add(this.accountUC1);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -306,6 +347,10 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private AccountUC accountUC1;
+        private ReserveUC reserveUC1;
+        private BorrowedListUC borrowedListUC1;
+        private BookListUC bookListUC1;
         private EditBookUC editBookUC1;
         private AddBookUC addBookUC1;
         private HomeUC homeUC1;

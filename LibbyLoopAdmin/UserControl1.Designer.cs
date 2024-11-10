@@ -40,20 +40,20 @@
             this.txtBookCategory = new System.Windows.Forms.TextBox();
             this.addPic = new System.Windows.Forms.Button();
             this.mySqlConnection1 = new MySql.Data.MySqlClient.MySqlConnection();
+            this.BookList = new System.Windows.Forms.DataGridView();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BookList = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.BookList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BookList)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -178,6 +178,17 @@
             this.addPic.UseVisualStyleBackColor = false;
             this.addPic.Click += new System.EventHandler(this.addPic_Click);
             // 
+            // BookList
+            // 
+            this.BookList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
+            this.BookList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BookList.Location = new System.Drawing.Point(384, 96);
+            this.BookList.Name = "BookList";
+            this.BookList.Size = new System.Drawing.Size(339, 407);
+            this.BookList.TabIndex = 20;
+            this.BookList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BookList_CellContentClick);
+            // 
             // pictureBox6
             // 
             this.pictureBox6.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.displPic;
@@ -235,17 +246,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // BookList
-            // 
-            this.BookList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
-            this.BookList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.BookList.Location = new System.Drawing.Point(384, 96);
-            this.BookList.Name = "BookList";
-            this.BookList.Size = new System.Drawing.Size(339, 407);
-            this.BookList.TabIndex = 20;
-            this.BookList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BookList_CellContentClick);
-            // 
             // AddBookUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,13 +271,13 @@
             this.Name = "AddBookUC";
             this.Size = new System.Drawing.Size(795, 565);
             this.Load += new System.EventHandler(this.UserControl1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.BookList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BookList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

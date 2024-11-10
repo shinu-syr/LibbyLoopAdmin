@@ -162,6 +162,10 @@ namespace LibbyLoopAdmin
 
             addBookUC1.Hide();
             editBookUC1.Hide();
+            bookListUC1.Hide();
+            borrowedListUC1.Hide();
+            reserveUC1.Hide();
+            accountUC1.Hide();
         }
 
         private void Addbtn_Click(object sender, EventArgs e)
@@ -171,6 +175,10 @@ namespace LibbyLoopAdmin
 
             homeUC1.Hide();
             editBookUC1.Hide();
+            bookListUC1.Hide();
+            borrowedListUC1.Hide();
+            reserveUC1.Hide();
+            accountUC1.Hide();
         }
 
         private void Editbtn_Click(object sender, EventArgs e)
@@ -180,11 +188,67 @@ namespace LibbyLoopAdmin
 
             addBookUC1.Hide();
             homeUC1.Hide();
+            bookListUC1.Hide();
+            borrowedListUC1.Hide();
+            reserveUC1.Hide();
+            accountUC1.Hide();
         }
 
         private void addBookUC1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Booklistbtn_Click(object sender, EventArgs e)
+        {
+            bookListUC1.Show();
+            bookListUC1.BringToFront();
+
+            addBookUC1.Hide();
+            homeUC1.Hide();
+            editBookUC1.Hide();
+            borrowedListUC1.Hide();
+            reserveUC1.Hide();
+            accountUC1.Hide();
+        }
+
+        private void Borrowedlistbtn_Click(object sender, EventArgs e)
+        {
+            borrowedListUC1.Show();
+            borrowedListUC1.BringToFront();
+
+            addBookUC1.Hide();
+            homeUC1.Hide();
+            bookListUC1.Hide();
+            reserveUC1.Hide();
+            accountUC1.Hide();
+            editBookUC1.Hide();
+        }
+
+        private void ReservationBtn_Click(object sender, EventArgs e)
+        {
+            reserveUC1.Show();
+            reserveUC1.BringToFront();
+
+            addBookUC1.Hide();
+            homeUC1.Hide();
+            bookListUC1.Hide();
+            borrowedListUC1.Hide();
+            editBookUC1.Hide();
+            accountUC1.Hide();
+        }
+
+        private void Accountbtn_Click(object sender, EventArgs e)
+        {
+            accountUC1.Show();
+            accountUC1.BringToFront();
+
+            addBookUC1.Hide();
+            homeUC1.Hide();
+            bookListUC1.Hide();
+            borrowedListUC1.Hide();
+            reserveUC1.Hide();
+            editBookUC1.Hide();
         }
     }
 }
