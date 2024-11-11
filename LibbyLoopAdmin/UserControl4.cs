@@ -1,12 +1,15 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibbyLoopAdmin
 {
@@ -15,9 +18,202 @@ namespace LibbyLoopAdmin
         public BookListUC()
         {
             InitializeComponent();
+            cbSearchCateg.Items.Insert(0, "All Categories"); 
+
+            
+            cbSearchCateg.SelectedIndex = 0;
+            txtSearch.TextChanged += TxtSearch_TextChanged;
+            cbSearchCateg.SelectedIndexChanged += cbSearchCateg_SelectedIndexChanged;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+        }
+        //omays
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+            SearchBooks(txtSearch.Text, cbSearchCateg.SelectedItem?.ToString());
+        }
+        private void LoadBooksData()
+        {
+            try
+            {
+                string connectionString = "SERVER=localhost; DATABASE=libbyloop; UID=root; PASSWORD=;";
+                using (MySqlConnection con = new MySqlConnection(connectionString))
+                {
+                    con.Open();
+                    MySqlDataAdapter da = new MySqlDataAdapter("SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability FROM newbook ORDER BY bTitle ASC", con);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+
+                    dataGridView1.Columns["bTitle"].HeaderText = "Title";
+                    dataGridView1.Columns["bIsbn"].HeaderText = "ISBN";
+                    dataGridView1.Columns["bAuthor"].HeaderText = "Author";
+                    dataGridView1.Columns["bCategory"].HeaderText = "Category";
+                    dataGridView1.Columns["bAvailability"].HeaderText = "Available";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+        private void UserControl4_Load(object sender, EventArgs e)
+        {
+            LoadBooksData();
         }
 
-        private void UserControl4_Load(object sender, EventArgs e)
+        private void SearchBooks(string searchTerm, string selectedCategory)
+        {
+            try
+            {
+                string connectionString = "SERVER=localhost; DATABASE=libbyloop; UID=root; PASSWORD=;";
+                using (MySqlConnection con = new MySqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    string query = "SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability FROM newbook";
+                    bool hasCategoryFilter = selectedCategory != "All Categories";
+                    bool hasSearchFilter = !string.IsNullOrWhiteSpace(searchTerm);
+
+                    if (hasCategoryFilter || hasSearchFilter)
+                    {
+                        query += " WHERE";
+                        List<string> conditions = new List<string>();
+
+                        if (hasCategoryFilter)
+                        {
+                            conditions.Add(" bCategory = @Category");
+                        }
+
+                        if (hasSearchFilter)
+                        {
+                            conditions.Add(" (bTitle LIKE @SearchTerm OR bIsbn LIKE @SearchTerm OR bAuthor LIKE @SearchTerm OR bCategory LIKE @SearchTerm)");
+                        }
+
+                        query += string.Join(" AND", conditions);
+                    }
+
+                    query += " ORDER BY bTitle ASC";
+
+                    MySqlCommand cmd = new MySqlCommand(query, con);
+
+                    if (hasCategoryFilter)
+                    {
+                        cmd.Parameters.AddWithValue("@Category", selectedCategory);
+                    }
+
+                    if (hasSearchFilter)
+                    {
+                        cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+                    }
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while searching for books: " + ex.Message);
+            }
+        }
+        private void LoadImage(string isbn)
+        {
+            try
+            {
+                string connectionString = "SERVER=localhost; DATABASE=libbyloop; UID=root; PASSWORD=;";
+                using (MySqlConnection con = new MySqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    MySqlCommand cmd = new MySqlCommand("SELECT bImage FROM newbook WHERE bIsbn = @Isbn", con);
+                    cmd.Parameters.AddWithValue("@Isbn", isbn);
+
+                    byte[] imageBytes = (byte[])cmd.ExecuteScalar();
+
+                    if (imageBytes != null)
+                    {
+
+                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        {
+                            bookImage.Image = Image.FromStream(ms);
+                            bookImage.SizeMode = PictureBoxSizeMode.Zoom;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No image found for this book.");
+                        bookImage.Image = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading the image: " + ex.Message);
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string connectionString = "SERVER=localhost; DATABASE=libbyloop; UID=root; PASSWORD=;";
+                using (MySqlConnection con = new MySqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    if (e.RowIndex >= 0)
+                    {
+
+                        string isbn = dataGridView1.Rows[e.RowIndex].Cells["bIsbn"].Value.ToString();
+                        string title = dataGridView1.Rows[e.RowIndex].Cells["bTitle"].Value.ToString();
+                        MySqlCommand cmd = new MySqlCommand("SELECT * FROM newbook WHERE bIsbn = @Isbn", con);
+                        cmd.Parameters.AddWithValue("@Isbn", isbn);
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                               
+
+                                bool isAvailable = reader.GetBoolean(reader.GetOrdinal("bAvailability"));
+                                btnBorrow.Visible = true;
+                                if (isAvailable)
+                                {
+                                    btnBorrow.Enabled = true;
+                                    btnBorrow.Text = "Borrow";
+                                }
+                                else
+                                {
+                                    btnBorrow.Enabled = false;
+                                    btnBorrow.Text = "Unavailable";
+                                }
+                            }
+                            else
+                            {
+                               
+                            }
+                        }
+
+                   
+                        LoadImage(isbn);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading the image: " + ex.Message);
+            }
+
+        }
+
+        private void cbSearchCateg_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SearchBooks(txtSearch.Text, cbSearchCateg.SelectedItem?.ToString());
+        }
+
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
