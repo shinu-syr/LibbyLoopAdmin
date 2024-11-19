@@ -39,7 +39,6 @@
             this.txtBookIsbn = new System.Windows.Forms.TextBox();
             this.txtBookCategory = new System.Windows.Forms.TextBox();
             this.addPic = new System.Windows.Forms.Button();
-            this.mySqlConnection1 = new MySql.Data.MySqlClient.MySqlConnection();
             this.BookList = new System.Windows.Forms.DataGridView();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -302,7 +301,6 @@
         private System.Windows.Forms.TextBox txtBookCategory;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Button addPic;
-        private MySql.Data.MySqlClient.MySqlConnection mySqlConnection1;
         private System.Windows.Forms.DataGridView BookList;
     }
 }

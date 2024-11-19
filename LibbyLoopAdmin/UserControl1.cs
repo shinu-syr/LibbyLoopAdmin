@@ -1,15 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LibbyLoopAdmin
@@ -28,28 +22,40 @@ namespace LibbyLoopAdmin
 
         private void button1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
-
-
 
         private void addBook_Click(object sender, EventArgs e)
         {
-            string bTitle = txtBookTitle.Text;
-            string bAuthor = txtBookAuthor.Text;
-            string bIsbn = txtBookIsbn.Text;
-            string bCategory = txtBookCategory.Text;
+            // Get the text from the input fields
+            string bTitle = txtBookTitle.Text.Trim();
+            string bAuthor = txtBookAuthor.Text.Trim();
+            string bIsbn = txtBookIsbn.Text.Trim();
+            string bCategory = txtBookCategory.Text.Trim();
 
+            // Validation: Check if any field is empty
+            if (string.IsNullOrEmpty(bTitle) || string.IsNullOrEmpty(bAuthor) ||
+                string.IsNullOrEmpty(bIsbn) || string.IsNullOrEmpty(bCategory))
+            {
+                MessageBox.Show("All fields must be filled before adding the book.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Stop execution if validation fails
+            }
+
+            // Check if an image is selected
+            if (pictureBox6.Image == null)
+            {
+                MessageBox.Show("Please select an image for the book.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Convert the image to a byte array
             MemoryStream memoryStream = new MemoryStream();
             pictureBox6.Image.Save(memoryStream, ImageFormat.Png);
             byte[] bImage = new byte[memoryStream.Length];
@@ -77,37 +83,37 @@ namespace LibbyLoopAdmin
                         cmd.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Data Saved", "Success");
+                    MessageBox.Show("Book added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Clear the fields after successful insertion
                     txtBookTitle.Clear();
                     txtBookAuthor.Clear();
                     txtBookIsbn.Clear();
                     txtBookCategory.Clear();
                     pictureBox6.Image = null;
 
+                    // Refresh the book list
+                    listContent();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error");
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
-        
 
         private void addPic_Click(object sender, EventArgs e)
         {
             OpenFileDialog opf = new OpenFileDialog();
             opf.Filter = "Choose Image(*.JPG;*.PNG) | *.jpg;*.png";
 
-            if(opf.ShowDialog() == DialogResult.OK)
+            if (opf.ShowDialog() == DialogResult.OK)
             {
                 pictureBox6.Image = Image.FromFile(opf.FileName);
             }
         }
 
-
-
-        private void listContent() //error sa image salamat chatgpt din
+        private void listContent()
         {
             string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
 
@@ -149,10 +155,8 @@ namespace LibbyLoopAdmin
             }
         }
 
-
         private void BookList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
     }
 }
