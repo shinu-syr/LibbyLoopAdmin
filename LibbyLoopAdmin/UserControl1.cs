@@ -55,7 +55,7 @@ namespace LibbyLoopAdmin
                 return;
             }
 
-            // Convert the image to a byte array
+
             MemoryStream memoryStream = new MemoryStream();
             pictureBox6.Image.Save(memoryStream, ImageFormat.Png);
             byte[] bImage = new byte[memoryStream.Length];
@@ -92,7 +92,7 @@ namespace LibbyLoopAdmin
                     txtBookCategory.Clear();
                     pictureBox6.Image = null;
 
-                    // Refresh the book list
+
                     listContent();
                 }
                 catch (Exception ex)
@@ -106,9 +106,12 @@ namespace LibbyLoopAdmin
         {
             OpenFileDialog opf = new OpenFileDialog();
             opf.Filter = "Choose Image(*.JPG;*.PNG) | *.jpg;*.png";
+            opf.Multiselect = false; // Ensure only one image is selected
+            opf.RestoreDirectory = true; // Restore the directory to the last selected location
 
             if (opf.ShowDialog() == DialogResult.OK)
             {
+                // Load the selected image
                 pictureBox6.Image = Image.FromFile(opf.FileName);
             }
         }
@@ -140,6 +143,7 @@ namespace LibbyLoopAdmin
 
                     // Modify column headers (optional)
                     BookList.Columns["bLibid"].HeaderText = "ID";
+                    BookList.Columns["bLibid"].Visible = false; // Hide the ID column
                     BookList.Columns["bTitle"].HeaderText = "Book Title";
                     BookList.Columns["bAuthor"].HeaderText = "Author";
                     BookList.Columns["bIsbn"].HeaderText = "ISBN";

@@ -1,15 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibbyLoopAdmin
 {
@@ -18,20 +13,18 @@ namespace LibbyLoopAdmin
         public BookListUC()
         {
             InitializeComponent();
-            cbSearchCateg.Items.Insert(0, "All Categories"); 
-
-            
+            cbSearchCateg.Items.Insert(0, "All Categories");
             cbSearchCateg.SelectedIndex = 0;
             txtSearch.TextChanged += TxtSearch_TextChanged;
             cbSearchCateg.SelectedIndexChanged += cbSearchCateg_SelectedIndexChanged;
             dataGridView1.CellClick += dataGridView1_CellClick;
         }
-        //omays
+
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
-
             SearchBooks(txtSearch.Text, cbSearchCateg.SelectedItem?.ToString());
         }
+
         private void LoadBooksData()
         {
             try
@@ -40,7 +33,7 @@ namespace LibbyLoopAdmin
                 using (MySqlConnection con = new MySqlConnection(connectionString))
                 {
                     con.Open();
-                    MySqlDataAdapter da = new MySqlDataAdapter("SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability FROM newbook ORDER BY bTitle ASC", con);
+                    MySqlDataAdapter da = new MySqlDataAdapter("SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability, bImage FROM newbook ORDER BY bTitle ASC", con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                     dataGridView1.DataSource = ds.Tables[0];
@@ -50,6 +43,8 @@ namespace LibbyLoopAdmin
                     dataGridView1.Columns["bAuthor"].HeaderText = "Author";
                     dataGridView1.Columns["bCategory"].HeaderText = "Category";
                     dataGridView1.Columns["bAvailability"].HeaderText = "Available";
+
+                    dataGridView1.Columns["bImage"].Visible = false; // Hide the image column
                 }
             }
             catch (Exception ex)
@@ -57,6 +52,7 @@ namespace LibbyLoopAdmin
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
+
         private void UserControl4_Load(object sender, EventArgs e)
         {
             LoadBooksData();
@@ -71,7 +67,7 @@ namespace LibbyLoopAdmin
                 {
                     con.Open();
 
-                    string query = "SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability FROM newbook";
+                    string query = "SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability, bImage FROM newbook";
                     bool hasCategoryFilter = selectedCategory != "All Categories";
                     bool hasSearchFilter = !string.IsNullOrWhiteSpace(searchTerm);
 
@@ -111,6 +107,8 @@ namespace LibbyLoopAdmin
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                     dataGridView1.DataSource = ds.Tables[0];
+
+                    dataGridView1.Columns["bImage"].Visible = false; // Hide the image column
                 }
             }
             catch (Exception ex)
@@ -118,6 +116,7 @@ namespace LibbyLoopAdmin
                 MessageBox.Show("An error occurred while searching for books: " + ex.Message);
             }
         }
+
         private void LoadImage(string isbn)
         {
             try
@@ -134,7 +133,6 @@ namespace LibbyLoopAdmin
 
                     if (imageBytes != null)
                     {
-
                         using (MemoryStream ms = new MemoryStream(imageBytes))
                         {
                             bookImage.Image = Image.FromStream(ms);
@@ -165,7 +163,6 @@ namespace LibbyLoopAdmin
 
                     if (e.RowIndex >= 0)
                     {
-
                         string isbn = dataGridView1.Rows[e.RowIndex].Cells["bIsbn"].Value.ToString();
                         string title = dataGridView1.Rows[e.RowIndex].Cells["bTitle"].Value.ToString();
                         MySqlCommand cmd = new MySqlCommand("SELECT * FROM newbook WHERE bIsbn = @Isbn", con);
@@ -174,8 +171,6 @@ namespace LibbyLoopAdmin
                         {
                             if (reader.Read())
                             {
-                               
-
                                 bool isAvailable = reader.GetBoolean(reader.GetOrdinal("bAvailability"));
                                 btnBorrow.Visible = true;
                                 if (isAvailable)
@@ -189,15 +184,9 @@ namespace LibbyLoopAdmin
                                     btnBorrow.Text = "Unavailable";
                                 }
                             }
-                            else
-                            {
-                               
-                            }
                         }
 
-                   
                         LoadImage(isbn);
-
                     }
                 }
             }
@@ -205,7 +194,6 @@ namespace LibbyLoopAdmin
             {
                 MessageBox.Show("An error occurred while loading the image: " + ex.Message);
             }
-
         }
 
         private void cbSearchCateg_SelectedIndexChanged(object sender, EventArgs e)
@@ -215,7 +203,7 @@ namespace LibbyLoopAdmin
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
         }
     }
 }
+

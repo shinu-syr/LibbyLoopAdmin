@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace LibbyLoopAdmin
@@ -18,6 +19,7 @@ namespace LibbyLoopAdmin
             BookList.SelectionChanged += BookList_SelectionChanged;
             EditBook.Click += EditBook_Click;
             addPic.Click += addPic_Click;
+            pictureBox6.Click += PictureBox6_Click;
         }
 
         public void LoadBookData()
@@ -41,6 +43,7 @@ namespace LibbyLoopAdmin
                     }
 
                     BookList.Columns["bLibid"].HeaderText = "ID";
+                    BookList.Columns["bLibid"].Visible = false; 
                     BookList.Columns["bTitle"].HeaderText = "Book Title";
                     BookList.Columns["bAuthor"].HeaderText = "Author";
                     BookList.Columns["bIsbn"].HeaderText = "ISBN";
@@ -63,6 +66,39 @@ namespace LibbyLoopAdmin
                 txtBookAuthor.Text = row.Cells["bAuthor"].Value?.ToString() ?? "";
                 txtBookIsbn.Text = row.Cells["bIsbn"].Value?.ToString() ?? "";
                 txtBookCategory.Text = row.Cells["bCategory"].Value?.ToString() ?? "";
+
+                LoadBookImage(selectedBookId);
+            }
+        }
+
+        private void LoadBookImage(int bookId)
+        {
+            using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    mySqlConnection.Open();
+                    string query = "SELECT bImage FROM newbook WHERE bLibid = @bLibid";
+                    MySqlCommand cmd = new MySqlCommand(query, mySqlConnection);
+                    cmd.Parameters.AddWithValue("@bLibid", bookId);
+
+                    byte[] imgBytes = (byte[])cmd.ExecuteScalar();
+                    if (imgBytes != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream(imgBytes))
+                        {
+                            pictureBox6.Image = Image.FromStream(ms);
+                        }
+                    }
+                    else
+                    {
+                        pictureBox6.Image = null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while loading the book image: " + ex.Message, "Error");
+                }
             }
         }
 
@@ -70,8 +106,20 @@ namespace LibbyLoopAdmin
         {
             if (IsValidBookInfo())
             {
-                UpdateBookData(selectedBookId, txtBookTitle.Text, txtBookAuthor.Text, txtBookIsbn.Text, txtBookCategory.Text);
+             
+                byte[] bImage = ConvertImageToBytes(pictureBox6.Image); 
+                bool bAvailability = true; 
+                UpdateBookData(selectedBookId, txtBookTitle.Text, txtBookAuthor.Text, txtBookIsbn.Text, txtBookCategory.Text, bImage, bAvailability);
                 LoadBookData(); 
+            }
+        }
+
+        private byte[] ConvertImageToBytes(Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, img.RawFormat);
+                return ms.ToArray();
             }
         }
 
@@ -86,20 +134,22 @@ namespace LibbyLoopAdmin
             return true;
         }
 
-        private void UpdateBookData(int bookId, string bTitle, string bAuthor, string bIsbn, string bCategory)
+        private void UpdateBookData(int bookId, string bTitle, string bAuthor, string bIsbn, string bCategory, byte[] bImage, bool bAvailability)
         {
             using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
             {
                 try
                 {
                     mySqlConnection.Open();
-                    string query = "UPDATE newbook SET bTitle=@bTitle, bAuthor=@bAuthor, bIsbn=@bIsbn, bCategory=@bCategory WHERE bLibid=@bLibid";
+                    string query = "UPDATE newbook SET bTitle=@bTitle, bAuthor=@bAuthor, bIsbn=@bIsbn, bCategory=@bCategory, bImage=@bImage, bAvailability=@bAvailability WHERE bLibid=@bLibid";
                     using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
                     {
                         cmd.Parameters.AddWithValue("@bTitle", bTitle);
                         cmd.Parameters.AddWithValue("@bAuthor", bAuthor);
                         cmd.Parameters.AddWithValue("@bIsbn", bIsbn);
                         cmd.Parameters.AddWithValue("@bCategory", bCategory);
+                        cmd.Parameters.AddWithValue("@bImage", bImage);
+                        cmd.Parameters.AddWithValue("@bAvailability", bAvailability);
                         cmd.Parameters.AddWithValue("@bLibid", bookId);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
@@ -122,6 +172,17 @@ namespace LibbyLoopAdmin
         }
 
         private void addPic_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opf = new OpenFileDialog();
+            opf.Filter = "Choose Image(*.JPG;*.PNG) | *.jpg;*.png";
+
+            if (opf.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox6.Image = Image.FromFile(opf.FileName);
+            }
+        }
+
+        private void PictureBox6_Click(object sender, EventArgs e)
         {
             OpenFileDialog opf = new OpenFileDialog();
             opf.Filter = "Choose Image(*.JPG;*.PNG) | *.jpg;*.png";

@@ -95,6 +95,7 @@ namespace LibbyLoopAdmin
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 36;
             this.pictureBox6.TabStop = false;
+
             // 
             // txtBookCategory
             // 
