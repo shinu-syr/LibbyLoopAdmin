@@ -181,6 +181,16 @@ namespace LibbyLoopAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] defaultimage {
+            get {
+                object obj = ResourceManager.GetObject("defaultimage", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap displPic {
@@ -317,6 +327,16 @@ namespace LibbyLoopAdmin.Properties {
             get {
                 object obj = ResourceManager.GetObject("SearchIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sketch061124 {
+            get {
+                object obj = ResourceManager.GetObject("sketch061124", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

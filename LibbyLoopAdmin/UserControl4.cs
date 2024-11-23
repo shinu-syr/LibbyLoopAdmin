@@ -18,6 +18,7 @@ namespace LibbyLoopAdmin
             txtSearch.TextChanged += TxtSearch_TextChanged;
             cbSearchCateg.SelectedIndexChanged += cbSearchCateg_SelectedIndexChanged;
             dataGridView1.CellClick += dataGridView1_CellClick;
+            LoadBooksData();
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -43,8 +44,9 @@ namespace LibbyLoopAdmin
                     dataGridView1.Columns["bAuthor"].HeaderText = "Author";
                     dataGridView1.Columns["bCategory"].HeaderText = "Category";
                     dataGridView1.Columns["bAvailability"].HeaderText = "Available";
-
-                    dataGridView1.Columns["bImage"].Visible = false; // Hide the image column
+                    dataGridView1.Columns["bAvailability"].CellTemplate = new DataGridViewCheckBoxCell();
+                    dataGridView1.Columns["bAvailability"].ValueType = typeof(bool);
+                    dataGridView1.Columns["bImage"].Visible = false; 
                 }
             }
             catch (Exception ex)
@@ -108,7 +110,7 @@ namespace LibbyLoopAdmin
                     da.Fill(ds);
                     dataGridView1.DataSource = ds.Tables[0];
 
-                    dataGridView1.Columns["bImage"].Visible = false; // Hide the image column
+                    dataGridView1.Columns["bImage"].Visible = false; 
                 }
             }
             catch (Exception ex)
@@ -163,10 +165,12 @@ namespace LibbyLoopAdmin
 
                     if (e.RowIndex >= 0)
                     {
-                        string isbn = dataGridView1.Rows[e.RowIndex].Cells["bIsbn"].Value.ToString();
-                        string title = dataGridView1.Rows[e.RowIndex].Cells["bTitle"].Value.ToString();
+                        DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+                        selectedIsbn = selectedRow.Cells["bIsbn"].Value?.ToString();
+                        selectedTitle = selectedRow.Cells["bTitle"].Value?.ToString();
+                        selectedAuthor = selectedRow.Cells["bAuthor"].Value?.ToString();
                         MySqlCommand cmd = new MySqlCommand("SELECT * FROM newbook WHERE bIsbn = @Isbn", con);
-                        cmd.Parameters.AddWithValue("@Isbn", isbn);
+                        cmd.Parameters.AddWithValue("@Isbn", selectedIsbn);
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -177,16 +181,38 @@ namespace LibbyLoopAdmin
                                 {
                                     btnBorrow.Enabled = true;
                                     btnBorrow.Text = "Borrow";
+                                    btnReserve.Enabled = true;
+                                    btnReserve.Text = "Reserve";
                                 }
                                 else
                                 {
                                     btnBorrow.Enabled = false;
                                     btnBorrow.Text = "Unavailable";
+                                    btnReserve.Enabled = false;
+                                    btnReserve.Text = "Unavailable";
                                 }
                             }
                         }
 
-                        LoadImage(isbn);
+                        string isbn = selectedIsbn;
+                        MySqlCommand imgCmd = new MySqlCommand("SELECT bImage FROM newbook WHERE bIsbn = @Isbn", con);
+                        imgCmd.Parameters.AddWithValue("@Isbn", isbn);
+
+                        byte[] imageBytes = (byte[])imgCmd.ExecuteScalar();
+                        if (imageBytes != null)
+                        {
+                            using (MemoryStream ms = new MemoryStream(imageBytes))
+                            {
+                                selectedImage = Image.FromStream(ms); 
+                                bookImage.Image = selectedImage; 
+                                bookImage.SizeMode = PictureBoxSizeMode.Zoom;
+                            }
+                        }
+                        else
+                        {
+                            selectedImage = null; 
+                            bookImage.Image = null;
+                        }
                     }
                 }
             }
@@ -203,6 +229,96 @@ namespace LibbyLoopAdmin
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
+        }
+        private string selectedIsbn;
+        private string selectedTitle;
+        private string selectedAuthor;
+        private Image selectedImage;
+
+        private void btnBorrow_Click(object sender, EventArgs e)
+        {
+            try
+               {
+                if (!string.IsNullOrEmpty(selectedIsbn))
+                {
+                    using (Form2 borrowForm = new Form2(selectedIsbn, selectedTitle, selectedAuthor, selectedImage))
+                    {
+                        borrowForm.FormClosed += BorrowForm_FormClosed; 
+                        borrowForm.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No book is selected. Please select a book from the list.");
+                }
+                }
+                catch (Exception ex)
+                {
+                MessageBox.Show("An error occurred while opening the Borrow form: " + ex.Message);
+            }
+        }
+
+        private void BorrowForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadBooksData();
+            if (!string.IsNullOrEmpty(selectedIsbn))
+            {
+                UpdateBookAvailability(selectedIsbn);
+            }
+        }
+
+        private void UpdateBookAvailability(string isbn)
+        {
+            try
+            {
+                string connectionString = "SERVER=localhost; DATABASE=libbyloop; UID=root; PASSWORD=;";
+                using (MySqlConnection con = new MySqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    string query = "SELECT bAvailability FROM newbook WHERE bIsbn = @Isbn";
+                    MySqlCommand cmd = new MySqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@Isbn", isbn);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null && result is bool)
+                    {
+                        bool isAvailable = (bool)result;
+
+                        btnBorrow.Enabled = isAvailable;
+                        btnBorrow.Text = isAvailable ? "Borrow" : "Unavailable";
+                    }
+                }
+                LoadBooksData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while updating book availability: " + ex.Message);
+            }
+        }
+
+        private void btnReserve_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(selectedIsbn))
+                {
+                    using (Form4 borrowForm = new Form4(selectedIsbn, selectedTitle, selectedAuthor, selectedImage))
+                    {
+                        borrowForm.FormClosed += BorrowForm_FormClosed;
+                        borrowForm.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No book is selected. Please select a book from the list.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while opening the Borrow form: " + ex.Message);
+            }
         }
     }
 }

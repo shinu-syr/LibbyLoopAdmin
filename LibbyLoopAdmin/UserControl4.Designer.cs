@@ -60,6 +60,7 @@
             this.btnReserve.TabIndex = 5;
             this.btnReserve.Text = "Reserve";
             this.btnReserve.UseVisualStyleBackColor = false;
+            this.btnReserve.Click += new System.EventHandler(this.btnReserve_Click);
             // 
             // btnBorrow
             // 
@@ -73,6 +74,7 @@
             this.btnBorrow.TabIndex = 6;
             this.btnBorrow.Text = "Borrow now";
             this.btnBorrow.UseVisualStyleBackColor = false;
+            this.btnBorrow.Click += new System.EventHandler(this.btnBorrow_Click);
             // 
             // cbSearchCateg
             // 
