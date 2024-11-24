@@ -99,17 +99,20 @@ namespace LibbyLoopAdmin
                 bool isOverdue = returnDate > dueDate;
                 bool isStudent = userType == "STUDENT";
 
-             
+
 
                 if (isOverdue && isStudent)
                 {
-                    
+
                     TimeSpan overdueDays = returnDate - dueDate;
                     penalty = overdueDays.Days * 10;
                 }
+                else
+                {
+                    ProcessBookReturn(isbn);
+                }
 
-
-                if (penalty > 0 || isStudent)
+                if (penalty > 0 && isStudent)
                 {
                     Form3 paymentForm = new Form3(penalty, isbn);
                     paymentForm.ShowDialog();
