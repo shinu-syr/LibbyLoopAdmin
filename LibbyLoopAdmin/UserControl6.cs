@@ -126,10 +126,7 @@ namespace LibbyLoopAdmin
                         MessageBox.Show("Payment was not completed.");
                     }
                 }
-                else
-                {
-                    ProcessBookReturn(isbn);
-                }
+               
             }
             catch (Exception ex)
             {
