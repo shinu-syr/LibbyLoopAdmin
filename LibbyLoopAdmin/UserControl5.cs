@@ -40,6 +40,10 @@ namespace LibbyLoopAdmin
                     dataGridView1.Columns["claim_date"].HeaderText = "Claim Date";
                     dataGridView1.Columns["college"].Visible = false;
                     dataGridView1.Columns["user_type"].Visible = false;
+
+                    // Resize columns automatically
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
                 }
             }
             catch (Exception ex)
@@ -132,6 +136,11 @@ namespace LibbyLoopAdmin
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -149,6 +149,9 @@ namespace LibbyLoopAdmin
                     BookList.Columns["bIsbn"].HeaderText = "ISBN";
                     BookList.Columns["bCategory"].HeaderText = "Category";
 
+                    BookList.RowHeadersWidth = 30; // yung default selector sa left banda
+
+
                     // Close the connection
                     mySqlConnection.Close();
                 }

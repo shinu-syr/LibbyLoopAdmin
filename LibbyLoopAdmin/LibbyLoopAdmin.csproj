@@ -322,5 +322,44 @@
   <ItemGroup>
     <None Include="Resources\SearchIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewBListTable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newBlistSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewBlistCombobox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewBlistHolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewBlistImagePlaceholdr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonBlistNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlistNewSeacrhbar2.0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewBlist2.0ComboBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newBresBborTablePlaceholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comboBoxInMiniForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\miniformPlaceholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BookInfoHolderMiniWindoV1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BookInfoHolderMiniWindoV2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

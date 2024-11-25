@@ -56,8 +56,11 @@ namespace LibbyLoopAdmin
                     dataGridView1.Columns["Last_Name"].HeaderText = "Last Name";
                     dataGridView1.Columns["date_borrowed"].HeaderText = "Date Borrowed";
                     dataGridView1.Columns["date_due"].HeaderText = "Date Due";
-           
-                
+
+                    // Resize columns automatically
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+
 
                 }
             }
@@ -214,6 +217,10 @@ namespace LibbyLoopAdmin
             return userType;
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 }

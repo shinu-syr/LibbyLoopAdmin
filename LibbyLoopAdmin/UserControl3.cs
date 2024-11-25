@@ -35,6 +35,7 @@ namespace LibbyLoopAdmin
                     da.Fill(dt);
 
                     BookList.DataSource = dt;
+
                     BookList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                     foreach (DataGridViewColumn column in BookList.Columns)
@@ -48,6 +49,8 @@ namespace LibbyLoopAdmin
                     BookList.Columns["bAuthor"].HeaderText = "Author";
                     BookList.Columns["bIsbn"].HeaderText = "ISBN";
                     BookList.Columns["bCategory"].HeaderText = "Category";
+
+                    BookList.RowHeadersWidth = 30; // yung default selector sa left banda
                 }
                 catch (Exception ex)
                 {

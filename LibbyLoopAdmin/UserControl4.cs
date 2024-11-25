@@ -43,10 +43,13 @@ namespace LibbyLoopAdmin
                     dataGridView1.Columns["bIsbn"].HeaderText = "ISBN";
                     dataGridView1.Columns["bAuthor"].HeaderText = "Author";
                     dataGridView1.Columns["bCategory"].HeaderText = "Category";
-                    dataGridView1.Columns["bAvailability"].HeaderText = "Available";
+                    dataGridView1.Columns["bAvailability"].HeaderText = "Stocks";
                     dataGridView1.Columns["bAvailability"].CellTemplate = new DataGridViewCheckBoxCell();
                     dataGridView1.Columns["bAvailability"].ValueType = typeof(bool);
-                    dataGridView1.Columns["bImage"].Visible = false; 
+                    dataGridView1.Columns["bImage"].Visible = false;
+
+                    dataGridView1.RowHeadersWidth = 21; // yung default selector sa left banda
+
                 }
             }
             catch (Exception ex)
@@ -138,7 +141,7 @@ namespace LibbyLoopAdmin
                         using (MemoryStream ms = new MemoryStream(imageBytes))
                         {
                             bookImage.Image = Image.FromStream(ms);
-                            bookImage.SizeMode = PictureBoxSizeMode.Zoom;
+                            bookImage.SizeMode = PictureBoxSizeMode.StretchImage;
                         }
                     }
                     else
@@ -319,6 +322,21 @@ namespace LibbyLoopAdmin
             {
                 MessageBox.Show("An error occurred while opening the Borrow form: " + ex.Message);
             }
+        }
+
+        private void bookImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

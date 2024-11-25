@@ -115,6 +115,20 @@ namespace LibbyLoopAdmin
                 return ms.ToArray();
             }
         }
-    
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxBook_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -128,7 +128,7 @@ namespace LibbyLoopAdmin
             try
             {
                 mySqlConnection.Open();
-                MessageBox.Show("connected", "Database Connection");
+                MessageBox.Show("connected successfully", "Testing Database connection...");
             }
             catch (Exception ex)
             {
@@ -249,6 +249,11 @@ namespace LibbyLoopAdmin
             borrowedListUC1.Hide();
             reserveUC1.Hide();
             editBookUC1.Hide();
+        }
+
+        private void homeUC1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
