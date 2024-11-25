@@ -34,6 +34,7 @@ namespace LibbyLoopAdmin
                 pictureBoxBook.Image = bookImage;
                 pictureBoxBook.SizeMode = PictureBoxSizeMode.Zoom;
             }
+
         }
 
         private void Form4_Load(object sender, EventArgs e)

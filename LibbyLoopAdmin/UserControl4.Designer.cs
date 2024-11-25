@@ -57,7 +57,7 @@
             this.cbSearchCateg.BackColor = System.Drawing.Color.White;
             this.cbSearchCateg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchCateg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbSearchCateg.Font = new System.Drawing.Font("Metropolis", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSearchCateg.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSearchCateg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
             this.cbSearchCateg.FormattingEnabled = true;
             this.cbSearchCateg.Items.AddRange(new object[] {
@@ -67,18 +67,18 @@
             "Children"});
             this.cbSearchCateg.Location = new System.Drawing.Point(594, 115);
             this.cbSearchCateg.Name = "cbSearchCateg";
-            this.cbSearchCateg.Size = new System.Drawing.Size(185, 23);
+            this.cbSearchCateg.Size = new System.Drawing.Size(185, 26);
             this.cbSearchCateg.TabIndex = 7;
             // 
             // txtSearch
             // 
             this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSearch.Font = new System.Drawing.Font("Metropolis", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
             this.txtSearch.Location = new System.Drawing.Point(22, 117);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(524, 19);
+            this.txtSearch.Size = new System.Drawing.Size(524, 22);
             this.txtSearch.TabIndex = 8;
             // 
             // dataGridView1
@@ -116,6 +116,7 @@
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
             this.dataGridView1.Location = new System.Drawing.Point(19, 160);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));

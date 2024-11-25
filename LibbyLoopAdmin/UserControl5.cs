@@ -16,7 +16,17 @@ namespace LibbyLoopAdmin
         public ReserveUC()
         {
             InitializeComponent();
+            this.Load += new EventHandler(this.ReserveUC_Load);
+            this.VisibleChanged += new EventHandler(ReserveUC_VisibleChanged);
             LoadBorrowedBooks();
+        }
+        private void ReserveUC_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                LoadBorrowedBooks();
+            }
+
         }
         private void LoadBorrowedBooks()
         {
@@ -122,7 +132,7 @@ namespace LibbyLoopAdmin
                         }
 
                         transaction.Commit();
-                        MessageBox.Show("Reservation successfully moved to borrowed.");
+                        MessageBox.Show("Reservation successfully claimed and moved to borrow.");
                         LoadBorrowedBooks(); 
                     }
                     catch (Exception ex)
@@ -141,6 +151,12 @@ namespace LibbyLoopAdmin
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void ReserveUC_Load(object sender, EventArgs e)
+        {
+            LoadBorrowedBooks();
+               
         }
     }
 }

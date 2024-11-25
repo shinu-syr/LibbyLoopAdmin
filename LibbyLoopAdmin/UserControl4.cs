@@ -18,6 +18,7 @@ namespace LibbyLoopAdmin
             txtSearch.TextChanged += TxtSearch_TextChanged;
             cbSearchCateg.SelectedIndexChanged += cbSearchCateg_SelectedIndexChanged;
             dataGridView1.CellClick += dataGridView1_CellClick;
+            this.VisibleChanged += new EventHandler(UserControl4_VisibleChanged);
             LoadBooksData();
         }
 
@@ -44,11 +45,25 @@ namespace LibbyLoopAdmin
                     dataGridView1.Columns["bAuthor"].HeaderText = "Author";
                     dataGridView1.Columns["bCategory"].HeaderText = "Category";
                     dataGridView1.Columns["bAvailability"].HeaderText = "Stocks";
-                    dataGridView1.Columns["bAvailability"].CellTemplate = new DataGridViewCheckBoxCell();
-                    dataGridView1.Columns["bAvailability"].ValueType = typeof(bool);
-                    dataGridView1.Columns["bImage"].Visible = false;
+                    if (!(dataGridView1.Columns["bAvailability"] is DataGridViewCheckBoxColumn))
+                    {
+                        DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn
+                        {
+                            DataPropertyName = "bAvailability",
+                            Name = "bAvailability",
+                            HeaderText = "Available",
+                            TrueValue = true,
+                            FalseValue = false
+                        };
 
+                        int columnIndex = dataGridView1.Columns["bAvailability"].Index;
+                        dataGridView1.Columns.RemoveAt(columnIndex);
+                        dataGridView1.Columns.Insert(columnIndex, checkBoxColumn);
+                    }
+                    dataGridView1.Columns["bImage"].Visible = false;
+                   
                     dataGridView1.RowHeadersWidth = 21; // yung default selector sa left banda
+                    dataGridView1.Refresh();
 
                 }
             }
@@ -58,9 +73,18 @@ namespace LibbyLoopAdmin
             }
         }
 
+        private void UserControl4_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                LoadBooksData();
+            }
+
+        }
         private void UserControl4_Load(object sender, EventArgs e)
         {
             LoadBooksData();
+            dataGridView1.Refresh();
         }
 
         private void SearchBooks(string searchTerm, string selectedCategory)
@@ -180,6 +204,7 @@ namespace LibbyLoopAdmin
                             {
                                 bool isAvailable = reader.GetBoolean(reader.GetOrdinal("bAvailability"));
                                 btnBorrow.Visible = true;
+                                btnReserve.Visible = true;
                                 if (isAvailable)
                                 {
                                     btnBorrow.Enabled = true;
@@ -263,11 +288,11 @@ namespace LibbyLoopAdmin
 
         private void BorrowForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            LoadBooksData();
             if (!string.IsNullOrEmpty(selectedIsbn))
             {
                 UpdateBookAvailability(selectedIsbn);
             }
+            LoadBooksData();
         }
 
         private void UpdateBookAvailability(string isbn)
@@ -291,9 +316,14 @@ namespace LibbyLoopAdmin
 
                         btnBorrow.Enabled = isAvailable;
                         btnBorrow.Text = isAvailable ? "Borrow" : "Unavailable";
+
+                        btnReserve.Enabled = isAvailable;
+                        btnReserve.Text = isAvailable ? "Borrow" : "Unavailable";
                     }
+                    LoadBooksData();
+                    dataGridView1.Refresh();
                 }
-                LoadBooksData();
+
             }
             catch (Exception ex)
             {
