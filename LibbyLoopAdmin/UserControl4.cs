@@ -51,7 +51,7 @@ namespace LibbyLoopAdmin
                         {
                             DataPropertyName = "bAvailability",
                             Name = "bAvailability",
-                            HeaderText = "Available",
+                            HeaderText = "Stocks",
                             TrueValue = true,
                             FalseValue = false
                         };
