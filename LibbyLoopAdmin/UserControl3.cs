@@ -59,7 +59,7 @@ namespace LibbyLoopAdmin
             }
         }
 
-        private void BookList_SelectionChanged(object sender, EventArgs e)
+        private void BookList_SelectionChanged(object sender, EventArgs e) //basta andito mga identifier sa method calling na updatebookdata
         {
             if (BookList.SelectedRows.Count > 0)
             {
@@ -105,14 +105,18 @@ namespace LibbyLoopAdmin
             }
         }
 
+
+        public event EventHandler DataSaved;//from form1 para ma reload datatable sa edit and viceversa
         private void EditBook_Click(object sender, EventArgs e)
         {
-            if (IsValidBookInfo())
+            if (IsValidBookInfo()) // validation whether may laman textbox
             {
              
                 byte[] bImage = ConvertImageToBytes(pictureBox6.Image); 
                 bool bAvailability = true; 
-                UpdateBookData(selectedBookId, txtBookTitle.Text, txtBookAuthor.Text, txtBookIsbn.Text, txtBookCategory.Text, bImage, bAvailability);
+                UpdateBookData(selectedBookId, txtBookTitle.Text, txtBookAuthor.Text, txtBookIsbn.Text, txtBookCategory.Text, bImage, bAvailability); //update changes
+
+                DataSaved?.Invoke(this, EventArgs.Empty); //from form1 para ma reload datatable sa edit and viceversa
                 LoadBookData(); 
             }
         }
@@ -194,6 +198,11 @@ namespace LibbyLoopAdmin
             {
                 pictureBox6.Image = Image.FromFile(opf.FileName);
             }
+        }
+
+        public void RefreshGrid()//from form1 para ma reload datatable sa edit and viceversa
+        {
+            LoadBookData();
         }
     }
 }

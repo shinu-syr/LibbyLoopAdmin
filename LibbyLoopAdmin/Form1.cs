@@ -114,13 +114,12 @@ namespace LibbyLoopAdmin
         //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
 
 
-
-
-
         public Form1()
         {
             InitializeComponent();
 
+            editBookUC1.DataSaved += (sender, e) => { addBookUC1.RefreshGrid(); }; //(rik)
+            addBookUC1.DataSaved += (sender, e) => { editBookUC1.RefreshGrid(); }; //(rik) para to ma refresh yung tables sa edit if nag add and viceversa---https://stackoverflow.com/questions/44519437/c-sharp-refresh-datagridview-of-another-usercontrol-after-inserting-data-in-anot
 
             //DATABEST CONNECTION TEST--------------------------------------------------------------------------------------------
             string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
@@ -166,7 +165,20 @@ namespace LibbyLoopAdmin
             borrowedListUC1.Hide();
             reserveUC1.Hide();
             accountUC1.Hide();
+
+            //btn pressed
+            Homebtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+
+            //btn unpressed
+            Addbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Editbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Booklistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Borrowedlistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Accountbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+
         }
+
 
         private void Addbtn_Click(object sender, EventArgs e)
         {
@@ -179,6 +191,18 @@ namespace LibbyLoopAdmin
             borrowedListUC1.Hide();
             reserveUC1.Hide();
             accountUC1.Hide();
+
+            //btn color
+            Homebtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Editbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Booklistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Borrowedlistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Accountbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+
+            Addbtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+
+
         }
 
         private void Editbtn_Click(object sender, EventArgs e)
@@ -192,6 +216,17 @@ namespace LibbyLoopAdmin
             borrowedListUC1.Hide();
             reserveUC1.Hide();
             accountUC1.Hide();
+
+            //btn color
+            Homebtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Addbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Booklistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Borrowedlistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Accountbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+
+            Editbtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+
         }
 
         private void addBookUC1_Load(object sender, EventArgs e)
@@ -210,6 +245,18 @@ namespace LibbyLoopAdmin
             borrowedListUC1.Hide();
             reserveUC1.Hide();
             accountUC1.Hide();
+
+            //btn color
+            Homebtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Addbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Borrowedlistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Accountbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Editbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+
+            Booklistbtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+
+
         }
 
         private void Borrowedlistbtn_Click(object sender, EventArgs e)
@@ -223,6 +270,17 @@ namespace LibbyLoopAdmin
             reserveUC1.Hide();
             accountUC1.Hide();
             editBookUC1.Hide();
+
+            //btn color
+            Homebtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Addbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Booklistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Editbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Accountbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+
+            Borrowedlistbtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+
         }
 
         private void ReservationBtn_Click(object sender, EventArgs e)
@@ -236,6 +294,17 @@ namespace LibbyLoopAdmin
             borrowedListUC1.Hide();
             editBookUC1.Hide();
             accountUC1.Hide();
+
+            //btn color
+            Homebtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Addbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Borrowedlistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Booklistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Editbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Accountbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+
+            ReservationBtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+
         }
 
         private void Accountbtn_Click(object sender, EventArgs e)
@@ -249,6 +318,17 @@ namespace LibbyLoopAdmin
             borrowedListUC1.Hide();
             reserveUC1.Hide();
             editBookUC1.Hide();
+
+            //btn color
+            Homebtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Editbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Addbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Booklistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Borrowedlistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+
+            Accountbtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+
         }
 
         private void homeUC1_Load(object sender, EventArgs e)

@@ -30,32 +30,31 @@ namespace LibbyLoopAdmin
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+
         }
 
+
+        public event EventHandler DataSaved;//from form1 para ma reload datatable sa edit and viceversa
         private void addBook_Click(object sender, EventArgs e)
         {
-            // Get the text from the input fields
             string bTitle = txtBookTitle.Text.Trim();
             string bAuthor = txtBookAuthor.Text.Trim();
             string bIsbn = txtBookIsbn.Text.Trim();
             string bCategory = txtBookCategory.Text.Trim();
 
-            // Validation: Check if any field is empty
-            if (string.IsNullOrEmpty(bTitle) || string.IsNullOrEmpty(bAuthor) ||
-                string.IsNullOrEmpty(bIsbn) || string.IsNullOrEmpty(bCategory))
+            //validations for both text and image
+            if (string.IsNullOrEmpty(bTitle) || string.IsNullOrEmpty(bAuthor) || string.IsNullOrEmpty(bIsbn) || string.IsNullOrEmpty(bCategory))
             {
                 MessageBox.Show("All fields must be filled before adding the book.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Stop execution if validation fails
+                return;
             }
-
-            // Check if an image is selected
             if (pictureBox6.Image == null)
             {
                 MessageBox.Show("Please select an image for the book.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-
+            //from stack overflow pag insert ng image sa db
             MemoryStream memoryStream = new MemoryStream();
             pictureBox6.Image.Save(memoryStream, ImageFormat.Png);
             byte[] bImage = new byte[memoryStream.Length];
@@ -85,13 +84,13 @@ namespace LibbyLoopAdmin
 
                     MessageBox.Show("Book added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Clear the fields after successful insertion
-                    txtBookTitle.Clear();
+                    txtBookTitle.Clear(); //clear after added
                     txtBookAuthor.Clear();
                     txtBookIsbn.Clear();
                     txtBookCategory.Clear();
                     pictureBox6.Image = null;
 
+                    DataSaved?.Invoke(this, EventArgs.Empty); //from form1 para ma reload datatable sa edit and viceversa
 
                     listContent();
                 }
@@ -131,17 +130,14 @@ namespace LibbyLoopAdmin
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
-                    // Set the DataSource for the DataGridView
                     BookList.DataSource = dt;
 
                     // Remove left padding and set alignment
                     BookList.DefaultCellStyle.Padding = new Padding(0);
                     BookList.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
-                    // Resize columns automatically
-                    BookList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    BookList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//para ma full yung space automatically
 
-                    // Modify column headers (optional)
                     BookList.Columns["bLibid"].HeaderText = "ID";
                     BookList.Columns["bLibid"].Visible = false; // Hide the ID column
                     BookList.Columns["bTitle"].HeaderText = "Book Title";
@@ -151,8 +147,6 @@ namespace LibbyLoopAdmin
 
                     BookList.RowHeadersWidth = 30; // yung default selector sa left banda
 
-
-                    // Close the connection
                     mySqlConnection.Close();
                 }
                 catch (Exception ex)
@@ -164,6 +158,11 @@ namespace LibbyLoopAdmin
 
         private void BookList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        public void RefreshGrid()//from form1 para ma reload datatable sa edit and viceversa
+        {
+            listContent();
         }
     }
 }

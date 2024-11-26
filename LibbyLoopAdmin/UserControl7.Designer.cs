@@ -36,21 +36,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textbox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.newUsername = new System.Windows.Forms.TextBox();
+            this.newIdnumber = new System.Windows.Forms.TextBox();
+            this.newPasssword = new System.Windows.Forms.TextBox();
+            this.editPassword = new System.Windows.Forms.TextBox();
+            this.editIdnumber = new System.Windows.Forms.TextBox();
+            this.editUsername = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.AddAccBtn = new System.Windows.Forms.Button();
+            this.EditAccBtn = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.userList = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -58,12 +59,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userList)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.AccountListTextboxPlaceholder;
-            this.pictureBox2.Location = new System.Drawing.Point(445, 82);
+            this.pictureBox2.Location = new System.Drawing.Point(397, 82);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(249, 30);
             this.pictureBox2.TabIndex = 1;
@@ -72,7 +74,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.AccountlistPlaceholder;
-            this.pictureBox1.Location = new System.Drawing.Point(90, 82);
+            this.pictureBox1.Location = new System.Drawing.Point(42, 82);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(310, 380);
             this.pictureBox1.TabIndex = 0;
@@ -81,7 +83,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.AccountListTextboxPlaceholder;
-            this.pictureBox3.Location = new System.Drawing.Point(445, 145);
+            this.pictureBox3.Location = new System.Drawing.Point(397, 145);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(249, 30);
             this.pictureBox3.TabIndex = 2;
@@ -90,7 +92,7 @@
             // pictureBox4
             // 
             this.pictureBox4.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.AccountListTextboxPlaceholder;
-            this.pictureBox4.Location = new System.Drawing.Point(445, 207);
+            this.pictureBox4.Location = new System.Drawing.Point(397, 207);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(249, 30);
             this.pictureBox4.TabIndex = 3;
@@ -101,7 +103,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
-            this.label1.Location = new System.Drawing.Point(87, 62);
+            this.label1.Location = new System.Drawing.Point(39, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 17);
             this.label1.TabIndex = 5;
@@ -112,7 +114,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
-            this.label2.Location = new System.Drawing.Point(442, 62);
+            this.label2.Location = new System.Drawing.Point(394, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 6;
@@ -124,7 +126,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
-            this.label3.Location = new System.Drawing.Point(442, 125);
+            this.label3.Location = new System.Drawing.Point(394, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 17);
             this.label3.TabIndex = 7;
@@ -135,78 +137,78 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
-            this.label4.Location = new System.Drawing.Point(442, 187);
+            this.label4.Location = new System.Drawing.Point(394, 187);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Password";
             // 
-            // textbox1
+            // newUsername
             // 
-            this.textbox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
-            this.textbox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textbox1.Location = new System.Drawing.Point(451, 89);
-            this.textbox1.Name = "textbox1";
-            this.textbox1.Size = new System.Drawing.Size(237, 16);
-            this.textbox1.TabIndex = 14;
+            this.newUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
+            this.newUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.newUsername.Location = new System.Drawing.Point(403, 89);
+            this.newUsername.Name = "newUsername";
+            this.newUsername.Size = new System.Drawing.Size(237, 16);
+            this.newUsername.TabIndex = 14;
             // 
-            // textBox2
+            // newIdnumber
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox2.Location = new System.Drawing.Point(451, 152);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(237, 16);
-            this.textBox2.TabIndex = 15;
+            this.newIdnumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
+            this.newIdnumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newIdnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.newIdnumber.Location = new System.Drawing.Point(403, 152);
+            this.newIdnumber.Name = "newIdnumber";
+            this.newIdnumber.Size = new System.Drawing.Size(237, 16);
+            this.newIdnumber.TabIndex = 15;
             // 
-            // textBox3
+            // newPasssword
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox3.Location = new System.Drawing.Point(451, 214);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(237, 16);
-            this.textBox3.TabIndex = 16;
+            this.newPasssword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
+            this.newPasssword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newPasssword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.newPasssword.Location = new System.Drawing.Point(403, 214);
+            this.newPasssword.Name = "newPasssword";
+            this.newPasssword.Size = new System.Drawing.Size(237, 16);
+            this.newPasssword.TabIndex = 16;
             // 
-            // textBox4
+            // editPassword
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox4.Location = new System.Drawing.Point(451, 439);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(237, 16);
-            this.textBox4.TabIndex = 25;
+            this.editPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
+            this.editPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.editPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.editPassword.Location = new System.Drawing.Point(403, 439);
+            this.editPassword.Name = "editPassword";
+            this.editPassword.Size = new System.Drawing.Size(237, 16);
+            this.editPassword.TabIndex = 25;
             // 
-            // textBox5
+            // editIdnumber
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox5.Location = new System.Drawing.Point(451, 377);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(237, 16);
-            this.textBox5.TabIndex = 24;
+            this.editIdnumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
+            this.editIdnumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.editIdnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.editIdnumber.Location = new System.Drawing.Point(403, 377);
+            this.editIdnumber.Name = "editIdnumber";
+            this.editIdnumber.Size = new System.Drawing.Size(237, 16);
+            this.editIdnumber.TabIndex = 24;
             // 
-            // textBox6
+            // editUsername
             // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox6.Location = new System.Drawing.Point(451, 314);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(237, 16);
-            this.textBox6.TabIndex = 23;
+            this.editUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(241)))), ((int)(((byte)(225)))));
+            this.editUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.editUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.editUsername.Location = new System.Drawing.Point(403, 314);
+            this.editUsername.Name = "editUsername";
+            this.editUsername.Size = new System.Drawing.Size(237, 16);
+            this.editUsername.TabIndex = 23;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
-            this.label5.Location = new System.Drawing.Point(442, 412);
+            this.label5.Location = new System.Drawing.Point(394, 412);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 17);
             this.label5.TabIndex = 22;
@@ -217,7 +219,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
-            this.label6.Location = new System.Drawing.Point(442, 350);
+            this.label6.Location = new System.Drawing.Point(394, 350);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 17);
             this.label6.TabIndex = 21;
@@ -228,16 +230,17 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
-            this.label7.Location = new System.Drawing.Point(442, 287);
+            this.label7.Location = new System.Drawing.Point(394, 287);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 17);
             this.label7.TabIndex = 20;
             this.label7.Text = "Username";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.AccountListTextboxPlaceholder;
-            this.pictureBox5.Location = new System.Drawing.Point(445, 432);
+            this.pictureBox5.Location = new System.Drawing.Point(397, 432);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(249, 30);
             this.pictureBox5.TabIndex = 19;
@@ -246,7 +249,7 @@
             // pictureBox6
             // 
             this.pictureBox6.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.AccountListTextboxPlaceholder;
-            this.pictureBox6.Location = new System.Drawing.Point(445, 370);
+            this.pictureBox6.Location = new System.Drawing.Point(397, 370);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(249, 30);
             this.pictureBox6.TabIndex = 18;
@@ -255,67 +258,81 @@
             // pictureBox7
             // 
             this.pictureBox7.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.AccountListTextboxPlaceholder;
-            this.pictureBox7.Location = new System.Drawing.Point(445, 307);
+            this.pictureBox7.Location = new System.Drawing.Point(397, 307);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(249, 30);
             this.pictureBox7.TabIndex = 17;
             this.pictureBox7.TabStop = false;
             // 
-            // button1
+            // AddAccBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(187)))), ((int)(((byte)(131)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(508, 243);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 37);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = false;
+            this.AddAccBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(187)))), ((int)(((byte)(131)))));
+            this.AddAccBtn.FlatAppearance.BorderSize = 0;
+            this.AddAccBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddAccBtn.Location = new System.Drawing.Point(665, 82);
+            this.AddAccBtn.Name = "AddAccBtn";
+            this.AddAccBtn.Size = new System.Drawing.Size(86, 155);
+            this.AddAccBtn.TabIndex = 26;
+            this.AddAccBtn.Text = "Add";
+            this.AddAccBtn.UseVisualStyleBackColor = false;
+            this.AddAccBtn.Click += new System.EventHandler(this.AddAccBtn_Click);
             // 
-            // button2
+            // EditAccBtn
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(187)))), ((int)(((byte)(131)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(508, 468);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 37);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Apply Edit";
-            this.button2.UseVisualStyleBackColor = false;
+            this.EditAccBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(187)))), ((int)(((byte)(131)))));
+            this.EditAccBtn.FlatAppearance.BorderSize = 0;
+            this.EditAccBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditAccBtn.Location = new System.Drawing.Point(665, 307);
+            this.EditAccBtn.Name = "EditAccBtn";
+            this.EditAccBtn.Size = new System.Drawing.Size(86, 155);
+            this.EditAccBtn.TabIndex = 27;
+            this.EditAccBtn.Text = "Apply Edit";
+            this.EditAccBtn.UseVisualStyleBackColor = false;
+            this.EditAccBtn.Click += new System.EventHandler(this.EditAccBtn_Click);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(187)))), ((int)(((byte)(131)))));
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(90, 468);
+            this.button3.Location = new System.Drawing.Point(42, 483);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(310, 37);
             this.button3.TabIndex = 28;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = false;
             // 
+            // userList
+            // 
+            this.userList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.userList.Location = new System.Drawing.Point(47, 86);
+            this.userList.Name = "userList";
+            this.userList.Size = new System.Drawing.Size(300, 373);
+            this.userList.TabIndex = 29;
+            this.userList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userList_CellClick);
+            this.userList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userList_CellContentClick);
+            this.userList.SelectionChanged += new System.EventHandler(this.userList_SelectionChanged);
+            // 
             // AccountUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.userList);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.EditAccBtn);
+            this.Controls.Add(this.AddAccBtn);
+            this.Controls.Add(this.editPassword);
+            this.Controls.Add(this.editIdnumber);
+            this.Controls.Add(this.editUsername);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textbox1);
+            this.Controls.Add(this.newPasssword);
+            this.Controls.Add(this.newIdnumber);
+            this.Controls.Add(this.newUsername);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -327,6 +344,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
             this.Name = "AccountUC";
             this.Size = new System.Drawing.Size(795, 565);
+            this.Load += new System.EventHandler(this.AccountUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -334,6 +352,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,20 +368,21 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textbox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox newUsername;
+        private System.Windows.Forms.TextBox newIdnumber;
+        private System.Windows.Forms.TextBox newPasssword;
+        private System.Windows.Forms.TextBox editPassword;
+        private System.Windows.Forms.TextBox editIdnumber;
+        private System.Windows.Forms.TextBox editUsername;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button AddAccBtn;
+        private System.Windows.Forms.Button EditAccBtn;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView userList;
     }
 }

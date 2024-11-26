@@ -208,16 +208,23 @@ namespace LibbyLoopAdmin
                                 if (isAvailable)
                                 {
                                     btnBorrow.Enabled = true;
-                                    btnBorrow.Text = "Borrow";
+                                    btnBorrow.Text = "Borrow now";
+                                    btnBorrow.BackgroundImage = Properties.Resources.buttonBlistNew;
+
                                     btnReserve.Enabled = true;
                                     btnReserve.Text = "Reserve";
+                                    btnReserve.BackgroundImage = Properties.Resources.buttonBlistNew;
                                 }
                                 else
                                 {
                                     btnBorrow.Enabled = false;
                                     btnBorrow.Text = "Unavailable";
+                                    btnBorrow.BackgroundImage = Image.FromFile("C:/Users/reyes/Downloads/LibbyLoopAdminPictureBox/UnavailableBtn.png");
+
                                     btnReserve.Enabled = false;
                                     btnReserve.Text = "Unavailable";
+                                    btnReserve.BackgroundImage = Image.FromFile("C:/Users/reyes/Downloads/LibbyLoopAdminPictureBox/UnavailableBtn.png");
+
                                 }
                             }
                         }
