@@ -29,16 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.homeUC1 = new LibbyLoopAdmin.HomeUC();
-            this.addBookUC1 = new LibbyLoopAdmin.AddBookUC();
-            this.editBookUC1 = new LibbyLoopAdmin.EditBookUC();
-            this.bookListUC1 = new LibbyLoopAdmin.BookListUC();
-            this.borrowedListUC1 = new LibbyLoopAdmin.BorrowedListUC();
-            this.reserveUC1 = new LibbyLoopAdmin.ReserveUC();
-            this.accountUC1 = new LibbyLoopAdmin.AccountUC();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Homebtn = new System.Windows.Forms.Button();
             this.Addbtn = new System.Windows.Forms.Button();
@@ -47,11 +37,21 @@
             this.Borrowedlistbtn = new System.Windows.Forms.Button();
             this.ReservationBtn = new System.Windows.Forms.Button();
             this.Accountbtn = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.homeUC1 = new LibbyLoopAdmin.HomeUC();
+            this.addBookUC1 = new LibbyLoopAdmin.AddBookUC();
+            this.editBookUC1 = new LibbyLoopAdmin.EditBookUC();
+            this.bookListUC1 = new LibbyLoopAdmin.BookListUC();
+            this.borrowedListUC1 = new LibbyLoopAdmin.BorrowedListUC();
+            this.reserveUC1 = new LibbyLoopAdmin.ReserveUC();
+            this.accountUC1 = new LibbyLoopAdmin.AccountUC();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -67,99 +67,18 @@
             this.panel1.Controls.Add(this.Accountbtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(205, 606);
+            this.panel1.Size = new System.Drawing.Size(308, 932);
             this.panel1.TabIndex = 0;
-            // 
-            // homeUC1
-            // 
-            this.homeUC1.Location = new System.Drawing.Point(206, 35);
-            this.homeUC1.Name = "homeUC1";
-            this.homeUC1.Size = new System.Drawing.Size(795, 565);
-            this.homeUC1.TabIndex = 10;
-            this.homeUC1.Load += new System.EventHandler(this.homeUC1_Load);
-            // 
-            // addBookUC1
-            // 
-            this.addBookUC1.Location = new System.Drawing.Point(206, 35);
-            this.addBookUC1.Name = "addBookUC1";
-            this.addBookUC1.Size = new System.Drawing.Size(795, 565);
-            this.addBookUC1.TabIndex = 9;
-            // 
-            // editBookUC1
-            // 
-            this.editBookUC1.Location = new System.Drawing.Point(206, 35);
-            this.editBookUC1.Name = "editBookUC1";
-            this.editBookUC1.Size = new System.Drawing.Size(795, 565);
-            this.editBookUC1.TabIndex = 8;
-            // 
-            // bookListUC1
-            // 
-            this.bookListUC1.Location = new System.Drawing.Point(206, 35);
-            this.bookListUC1.Name = "bookListUC1";
-            this.bookListUC1.Size = new System.Drawing.Size(795, 565);
-            this.bookListUC1.TabIndex = 7;
-            // 
-            // borrowedListUC1
-            // 
-            this.borrowedListUC1.Location = new System.Drawing.Point(206, 35);
-            this.borrowedListUC1.Name = "borrowedListUC1";
-            this.borrowedListUC1.Size = new System.Drawing.Size(795, 565);
-            this.borrowedListUC1.TabIndex = 6;
-            // 
-            // reserveUC1
-            // 
-            this.reserveUC1.Location = new System.Drawing.Point(206, 35);
-            this.reserveUC1.Name = "reserveUC1";
-            this.reserveUC1.Size = new System.Drawing.Size(795, 565);
-            this.reserveUC1.TabIndex = 5;
-            // 
-            // accountUC1
-            // 
-            this.accountUC1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
-            this.accountUC1.Location = new System.Drawing.Point(206, 35);
-            this.accountUC1.Name = "accountUC1";
-            this.accountUC1.Size = new System.Drawing.Size(795, 565);
-            this.accountUC1.TabIndex = 4;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.LogOut;
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox4.Location = new System.Drawing.Point(792, 5);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(92, 29);
-            this.pictureBox4.TabIndex = 3;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.Minimize;
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Location = new System.Drawing.Point(890, 5);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(49, 29);
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.Close;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Location = new System.Drawing.Point(945, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(49, 29);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.LogoPng;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 34);
+            this.pictureBox1.Location = new System.Drawing.Point(22, 52);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(175, 115);
+            this.pictureBox1.Size = new System.Drawing.Size(262, 177);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -172,10 +91,11 @@
             this.Homebtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.Homebtn.Image = global::LibbyLoopAdmin.Properties.Resources.Homeicon;
             this.Homebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Homebtn.Location = new System.Drawing.Point(5, 167);
+            this.Homebtn.Location = new System.Drawing.Point(8, 257);
+            this.Homebtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Homebtn.Name = "Homebtn";
-            this.Homebtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.Homebtn.Size = new System.Drawing.Size(195, 54);
+            this.Homebtn.Padding = new System.Windows.Forms.Padding(34, 0, 0, 0);
+            this.Homebtn.Size = new System.Drawing.Size(292, 83);
             this.Homebtn.TabIndex = 7;
             this.Homebtn.Text = "    Home";
             this.Homebtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -192,10 +112,11 @@
             this.Addbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.Addbtn.Image = global::LibbyLoopAdmin.Properties.Resources.Addbookicon;
             this.Addbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Addbtn.Location = new System.Drawing.Point(5, 227);
+            this.Addbtn.Location = new System.Drawing.Point(8, 349);
+            this.Addbtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Addbtn.Name = "Addbtn";
-            this.Addbtn.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.Addbtn.Size = new System.Drawing.Size(195, 54);
+            this.Addbtn.Padding = new System.Windows.Forms.Padding(42, 0, 0, 0);
+            this.Addbtn.Size = new System.Drawing.Size(292, 83);
             this.Addbtn.TabIndex = 6;
             this.Addbtn.Text = "    Add book";
             this.Addbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -212,10 +133,11 @@
             this.Editbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.Editbtn.Image = global::LibbyLoopAdmin.Properties.Resources.editbookicon;
             this.Editbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Editbtn.Location = new System.Drawing.Point(5, 287);
+            this.Editbtn.Location = new System.Drawing.Point(8, 442);
+            this.Editbtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Editbtn.Name = "Editbtn";
-            this.Editbtn.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.Editbtn.Size = new System.Drawing.Size(195, 54);
+            this.Editbtn.Padding = new System.Windows.Forms.Padding(42, 0, 0, 0);
+            this.Editbtn.Size = new System.Drawing.Size(292, 83);
             this.Editbtn.TabIndex = 5;
             this.Editbtn.Text = "    Edit book";
             this.Editbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -232,10 +154,11 @@
             this.Booklistbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.Booklistbtn.Image = global::LibbyLoopAdmin.Properties.Resources.booklisticon;
             this.Booklistbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Booklistbtn.Location = new System.Drawing.Point(5, 347);
+            this.Booklistbtn.Location = new System.Drawing.Point(8, 534);
+            this.Booklistbtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Booklistbtn.Name = "Booklistbtn";
-            this.Booklistbtn.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.Booklistbtn.Size = new System.Drawing.Size(195, 54);
+            this.Booklistbtn.Padding = new System.Windows.Forms.Padding(42, 0, 0, 0);
+            this.Booklistbtn.Size = new System.Drawing.Size(292, 83);
             this.Booklistbtn.TabIndex = 4;
             this.Booklistbtn.Text = "    Book list";
             this.Booklistbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -252,10 +175,11 @@
             this.Borrowedlistbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.Borrowedlistbtn.Image = global::LibbyLoopAdmin.Properties.Resources.borrowlisticon;
             this.Borrowedlistbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Borrowedlistbtn.Location = new System.Drawing.Point(5, 407);
+            this.Borrowedlistbtn.Location = new System.Drawing.Point(8, 626);
+            this.Borrowedlistbtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Borrowedlistbtn.Name = "Borrowedlistbtn";
-            this.Borrowedlistbtn.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.Borrowedlistbtn.Size = new System.Drawing.Size(195, 54);
+            this.Borrowedlistbtn.Padding = new System.Windows.Forms.Padding(42, 0, 0, 0);
+            this.Borrowedlistbtn.Size = new System.Drawing.Size(292, 83);
             this.Borrowedlistbtn.TabIndex = 3;
             this.Borrowedlistbtn.Text = "    Borrowed list";
             this.Borrowedlistbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -272,10 +196,11 @@
             this.ReservationBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.ReservationBtn.Image = global::LibbyLoopAdmin.Properties.Resources.reserveationicon;
             this.ReservationBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReservationBtn.Location = new System.Drawing.Point(5, 467);
+            this.ReservationBtn.Location = new System.Drawing.Point(8, 718);
+            this.ReservationBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ReservationBtn.Name = "ReservationBtn";
-            this.ReservationBtn.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.ReservationBtn.Size = new System.Drawing.Size(195, 54);
+            this.ReservationBtn.Padding = new System.Windows.Forms.Padding(42, 0, 0, 0);
+            this.ReservationBtn.Size = new System.Drawing.Size(292, 83);
             this.ReservationBtn.TabIndex = 2;
             this.ReservationBtn.Text = "    Reservation";
             this.ReservationBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -292,10 +217,11 @@
             this.Accountbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.Accountbtn.Image = global::LibbyLoopAdmin.Properties.Resources.accounticon;
             this.Accountbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Accountbtn.Location = new System.Drawing.Point(5, 527);
+            this.Accountbtn.Location = new System.Drawing.Point(8, 811);
+            this.Accountbtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Accountbtn.Name = "Accountbtn";
-            this.Accountbtn.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.Accountbtn.Size = new System.Drawing.Size(195, 54);
+            this.Accountbtn.Padding = new System.Windows.Forms.Padding(42, 0, 0, 0);
+            this.Accountbtn.Size = new System.Drawing.Size(292, 83);
             this.Accountbtn.TabIndex = 1;
             this.Accountbtn.Text = "    Account";
             this.Accountbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -303,12 +229,106 @@
             this.Accountbtn.UseVisualStyleBackColor = true;
             this.Accountbtn.Click += new System.EventHandler(this.Accountbtn_Click);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.LogOut;
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox4.Location = new System.Drawing.Point(1188, 8);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(138, 45);
+            this.pictureBox4.TabIndex = 3;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.Minimize;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Location = new System.Drawing.Point(1335, 8);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(74, 45);
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.Close;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Location = new System.Drawing.Point(1418, 8);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(74, 45);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // homeUC1
+            // 
+            this.homeUC1.Location = new System.Drawing.Point(309, 54);
+            this.homeUC1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.homeUC1.Name = "homeUC1";
+            this.homeUC1.Size = new System.Drawing.Size(1192, 869);
+            this.homeUC1.TabIndex = 10;
+            this.homeUC1.Load += new System.EventHandler(this.homeUC1_Load);
+            // 
+            // addBookUC1
+            // 
+            this.addBookUC1.Location = new System.Drawing.Point(309, 54);
+            this.addBookUC1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.addBookUC1.Name = "addBookUC1";
+            this.addBookUC1.Size = new System.Drawing.Size(1192, 869);
+            this.addBookUC1.TabIndex = 9;
+            // 
+            // editBookUC1
+            // 
+            this.editBookUC1.Location = new System.Drawing.Point(309, 54);
+            this.editBookUC1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.editBookUC1.Name = "editBookUC1";
+            this.editBookUC1.Size = new System.Drawing.Size(1192, 869);
+            this.editBookUC1.TabIndex = 8;
+            // 
+            // bookListUC1
+            // 
+            this.bookListUC1.Location = new System.Drawing.Point(309, 54);
+            this.bookListUC1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.bookListUC1.Name = "bookListUC1";
+            this.bookListUC1.Size = new System.Drawing.Size(1192, 869);
+            this.bookListUC1.TabIndex = 7;
+            // 
+            // borrowedListUC1
+            // 
+            this.borrowedListUC1.Location = new System.Drawing.Point(309, 54);
+            this.borrowedListUC1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.borrowedListUC1.Name = "borrowedListUC1";
+            this.borrowedListUC1.Size = new System.Drawing.Size(1192, 869);
+            this.borrowedListUC1.TabIndex = 6;
+            // 
+            // reserveUC1
+            // 
+            this.reserveUC1.Location = new System.Drawing.Point(309, 54);
+            this.reserveUC1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.reserveUC1.Name = "reserveUC1";
+            this.reserveUC1.Size = new System.Drawing.Size(1192, 869);
+            this.reserveUC1.TabIndex = 5;
+            // 
+            // accountUC1
+            // 
+            this.accountUC1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
+            this.accountUC1.Location = new System.Drawing.Point(309, 54);
+            this.accountUC1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.accountUC1.Name = "accountUC1";
+            this.accountUC1.Size = new System.Drawing.Size(1192, 869);
+            this.accountUC1.TabIndex = 4;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(225)))), ((int)(((byte)(201)))));
-            this.ClientSize = new System.Drawing.Size(1000, 606);
+            this.ClientSize = new System.Drawing.Size(1500, 932);
             this.Controls.Add(this.homeUC1);
             this.Controls.Add(this.addBookUC1);
             this.Controls.Add(this.editBookUC1);
@@ -321,15 +341,16 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

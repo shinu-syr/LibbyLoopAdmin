@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace LibbyLoopAdmin
 {
     public partial class Form5 : Form
     {
-
-
-        //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
         private bool Drag;
         private int MouseX;
         private int MouseY;
@@ -29,14 +22,13 @@ namespace LibbyLoopAdmin
         private const int WM_NCPAINT = 0x0085;
         private const int WM_ACTIVATEAPP = 0x001C;
 
-        [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
+        [DllImport("dwmapi.dll")]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
-        [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
+        [DllImport("dwmapi.dll")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
-        [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
-
+        [DllImport("dwmapi.dll")]
         public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
-        [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
             int nLeftRect,
             int nTopRect,
@@ -53,6 +45,7 @@ namespace LibbyLoopAdmin
             public int topHeight;
             public int bottomHeight;
         }
+
         protected override CreateParams CreateParams
         {
             get
@@ -63,15 +56,18 @@ namespace LibbyLoopAdmin
                     cp.ClassStyle |= CS_DROPSHADOW; return cp;
             }
         }
+
         private bool CheckAeroEnabled()
         {
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                int enabled = 0; DwmIsCompositionEnabled(ref enabled);
-                return (enabled == 1) ? true : false;
+                int enabled = 0;
+                DwmIsCompositionEnabled(ref enabled);
+                return enabled == 1;
             }
             return false;
         }
+
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
@@ -87,7 +83,8 @@ namespace LibbyLoopAdmin
                             leftWidth = 0,
                             rightWidth = 0,
                             topHeight = 0
-                        }; DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+                        };
+                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
                     }
                     break;
                 default: break;
@@ -95,12 +92,14 @@ namespace LibbyLoopAdmin
             base.WndProc(ref m);
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT) m.Result = (IntPtr)HTCAPTION;
         }
+
         private void PanelMove_MouseDown(object sender, MouseEventArgs e)
         {
             Drag = true;
             MouseX = Cursor.Position.X - this.Left;
             MouseY = Cursor.Position.Y - this.Top;
         }
+
         private void PanelMove_MouseMove(object sender, MouseEventArgs e)
         {
             if (Drag)
@@ -109,19 +108,17 @@ namespace LibbyLoopAdmin
                 this.Left = Cursor.Position.X - MouseX;
             }
         }
+
         private void PanelMove_MouseUp(object sender, MouseEventArgs e) { Drag = false; }
-        //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
-
-
-
-
-
-
-
-
+        
+        //eto code ni login
         public Form5()
         {
             InitializeComponent();
+            button1.Click += btnLogin_Click;
+
+       
+            textBox2.PasswordChar = '•';
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
@@ -133,5 +130,40 @@ namespace LibbyLoopAdmin
         {
             WindowState = FormWindowState.Minimized;
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string connectionString = "server=localhost; database=libbyloop; uid=root; pwd=;";
+            using (MySqlConnection con = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    string query = "SELECT COUNT(*) FROM users WHERE username = @username AND password = @password";
+                    MySqlCommand cmd = new MySqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@username", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@password", textBox2.Text);
+
+                    int result = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Login Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Form1 mainForm = new Form1();
+                        mainForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
+
