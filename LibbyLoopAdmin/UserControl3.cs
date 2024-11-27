@@ -3,7 +3,9 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LibbyLoopAdmin
 {
@@ -203,6 +205,47 @@ namespace LibbyLoopAdmin
         public void RefreshGrid()//from form1 para ma reload datatable sa edit and viceversa
         {
             LoadBookData();
+        }
+
+        private void delBook_Click(object sender, EventArgs e) //para sa deletebook i2(rik)
+        {
+            DeleteBookData(selectedBookId);
+        }
+
+        private void DeleteBookData(int selectedBookId)
+        {
+            string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
+            using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    mySqlConnection.Open();
+
+                    string query = "DELETE FROM newbook WHERE bLibid = @bLibid";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@bLibid", selectedBookId);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Book Deleted successfully.", "Success");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Can't delete book data. Please check if the record exists.", "Error");
+                        }
+
+                        LoadBookData();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while deleting the book data: " + ex.Message, "Error");
+                }
+            }
         }
     }
 }

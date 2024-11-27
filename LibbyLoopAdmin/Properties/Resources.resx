@@ -121,14 +121,23 @@
   <data name="lastText" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lastText.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="comboBoxInMiniForm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\comboBoxInMiniForm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LogOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogOut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AccountlistPlaceholder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AccountlistPlaceholder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PicPlaceholder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PicPlaceholder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BookInfoHolderMiniWindoV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BookInfoHolderMiniWindoV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="displPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\displPic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginEx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginEx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buttonBlistNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buttonBlistNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,11 +154,14 @@
   <data name="reserveationicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\reserveationicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="editbookicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editbookicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PlaceholderPlacehocler" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlaceholderPlacehocler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginBgV3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBgV3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="XCOLAB" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XCOLAB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,14 +181,14 @@
   <data name="sketch061124" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sketch061124.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="BlistNewSeacrhbar2.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BlistNewSeacrhbar2.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="userIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\userIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="defaultimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sketch061124.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboBoxInMiniForm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\comboBoxInMiniForm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AccountlistPlaceholder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AccountlistPlaceholder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="searchbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\searchbar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,20 +202,29 @@
   <data name="Minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LoginText" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginText.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="accounticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\accounticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="textBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\textBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="editbookicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editbookicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CCISLOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CCISLOGO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="newBlistSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\newBlistSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BlistNewSeacrhbar2.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BlistNewSeacrhbar2.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="UMAKLOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UMAKLOGO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loginTextbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loginTextbox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NewBlistImagePlaceholdr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NewBlistImagePlaceholdr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -213,6 +234,9 @@
   </data>
   <data name="LogoGif" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogoGif.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newBlistSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newBlistSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,11 +250,23 @@
   <data name="BookList" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BookList.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PicPlaceholder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PicPlaceholder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginBgGifV1With" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBgGifV1With.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginBgGifWith" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBgGifWith.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="categorybar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\categorybar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginBg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginBgV1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBgV1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginBgV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBgV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NewBlistHolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NewBlistHolder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,7 +286,7 @@
   <data name="borrowlisticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\borrowlisticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BookInfoHolderMiniWindoV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BookInfoHolderMiniWindoV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginMin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginMin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

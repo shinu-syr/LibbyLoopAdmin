@@ -127,7 +127,7 @@ namespace LibbyLoopAdmin
             try
             {
                 mySqlConnection.Open();
-                MessageBox.Show("connected successfully", "Testing Database connection...");
+                MessageBox.Show("connected successfully", "Database");
             }
             catch (Exception ex)
             {

@@ -125,6 +125,12 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
     <Compile Include="PaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -360,6 +369,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BookInfoHolderMiniWindoV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBgV1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBgV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBgV3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBgGifWith.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBgGifV1With.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\userIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginTextbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginEx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginMin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -56,6 +56,7 @@ namespace LibbyLoopAdmin
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.delBook = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BookList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -190,9 +191,9 @@ namespace LibbyLoopAdmin
             this.EditBook.FlatAppearance.BorderSize = 0;
             this.EditBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditBook.ForeColor = System.Drawing.Color.White;
-            this.EditBook.Location = new System.Drawing.Point(168, 425);
+            this.EditBook.Location = new System.Drawing.Point(168, 468);
             this.EditBook.Name = "EditBook";
-            this.EditBook.Size = new System.Drawing.Size(150, 104);
+            this.EditBook.Size = new System.Drawing.Size(150, 61);
             this.EditBook.TabIndex = 31;
             this.EditBook.Text = "Apply Changes";
             this.EditBook.UseVisualStyleBackColor = false;
@@ -318,10 +319,25 @@ namespace LibbyLoopAdmin
             this.label6.TabIndex = 40;
             this.label6.Text = "EDIT BOOKS";
             // 
+            // delBook
+            // 
+            this.delBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(187)))), ((int)(((byte)(131)))));
+            this.delBook.FlatAppearance.BorderSize = 0;
+            this.delBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delBook.ForeColor = System.Drawing.Color.White;
+            this.delBook.Location = new System.Drawing.Point(168, 418);
+            this.delBook.Name = "delBook";
+            this.delBook.Size = new System.Drawing.Size(150, 44);
+            this.delBook.TabIndex = 41;
+            this.delBook.Text = "Delete Book";
+            this.delBook.UseVisualStyleBackColor = false;
+            this.delBook.Click += new System.EventHandler(this.delBook_Click);
+            // 
             // EditBookUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.delBook);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.BookList);
             this.Controls.Add(this.pictureBox7);
@@ -390,5 +406,6 @@ namespace LibbyLoopAdmin
         private System.Windows.Forms.PictureBox pictureBox1;
         private PictureBox pictureBox7;
         private Label label6;
+        private Button delBook;
     }
 }

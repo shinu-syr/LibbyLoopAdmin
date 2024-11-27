@@ -204,9 +204,6 @@ namespace LibbyLoopAdmin
         }
 
 
-
-
-
         private void userList_CellClick(object sender, DataGridViewCellEventArgs e) // same sa isa, kinuha lang from properties bolt, para ma reflect sa textbox pag kinlick sa left
         {
             if (e.RowIndex >= 0)
@@ -217,6 +214,47 @@ namespace LibbyLoopAdmin
                 editPassword.Text = row.Cells["Password"].Value.ToString();
 
                 selectedUserId = int.Parse(row.Cells["id"].Value.ToString());
+            }
+        }
+
+        private void delAcc_Click(object sender, EventArgs e)
+        {
+            DeleteAccountData(selectedUserId);
+        }
+
+        private void DeleteAccountData(int selectedUserId)
+        {
+            string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
+            using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    mySqlConnection.Open();
+
+                    string query = "DELETE FROM users WHERE id = @id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", selectedUserId);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("User Deleted successfully.", "Success");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Can't delete user data. Please check if the record exists.", "Error");
+                        }
+
+                        listContent();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while deleting the user data: " + ex.Message, "Error");
+                }
             }
         }
     }
