@@ -3,11 +3,14 @@ using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibbyLoopAdmin
 {
     public partial class Form5 : Form
     {
+
+        //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
         private bool Drag;
         private int MouseX;
         private int MouseY;
@@ -110,16 +113,20 @@ namespace LibbyLoopAdmin
         }
 
         private void PanelMove_MouseUp(object sender, MouseEventArgs e) { Drag = false; }
-        
+        //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
+
+
         //eto code ni login
         public Form5()
         {
-            InitializeComponent();
-            button1.Click += btnLogin_Click;
-
-       
-            textBox2.PasswordChar = '•';
+            InitializeComponent(); 
         }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void pictureBox9_Click(object sender, EventArgs e)
         {
@@ -131,7 +138,7 @@ namespace LibbyLoopAdmin
             WindowState = FormWindowState.Minimized;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void LoginBtn_Click(object sender, EventArgs e)
         {
             string connectionString = "server=localhost; database=libbyloop; uid=root; pwd=;";
             using (MySqlConnection con = new MySqlConnection(connectionString))
@@ -142,7 +149,7 @@ namespace LibbyLoopAdmin
                     string query = "SELECT COUNT(*) FROM users WHERE username = @username AND password = @password";
                     MySqlCommand cmd = new MySqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@username", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@password", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@password", passBox.Text);
 
                     int result = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -163,6 +170,11 @@ namespace LibbyLoopAdmin
                     MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void passBox_TextChanged(object sender, EventArgs e)
+        {
+            passBox.PasswordChar = '•';
         }
     }
 }

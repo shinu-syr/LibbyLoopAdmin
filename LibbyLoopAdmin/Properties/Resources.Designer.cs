@@ -373,6 +373,36 @@ namespace LibbyLoopAdmin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap loginGifSupPosa {
+            get {
+                object obj = ResourceManager.GetObject("loginGifSupPosa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap loginGifSupPosaV1 {
+            get {
+                object obj = ResourceManager.GetObject("loginGifSupPosaV1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LoginGifSupV2 {
+            get {
+                object obj = ResourceManager.GetObject("LoginGifSupV2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LoginMin {
             get {
                 object obj = ResourceManager.GetObject("LoginMin", resourceCulture);

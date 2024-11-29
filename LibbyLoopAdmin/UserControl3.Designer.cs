@@ -374,11 +374,6 @@ namespace LibbyLoopAdmin
 
         }
 
-        private void EditBookUC_Load(object sender, EventArgs e)
-        {
- 
-        }
-
         private void BookList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

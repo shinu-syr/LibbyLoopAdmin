@@ -14,6 +14,11 @@ namespace LibbyLoopAdmin
         private string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
         private int selectedBookId;
 
+        private void EditBookUC_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public EditBookUC()
         {
             InitializeComponent();
