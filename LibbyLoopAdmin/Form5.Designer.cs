@@ -86,7 +86,7 @@ namespace LibbyLoopAdmin
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(205)))), ((int)(((byte)(209)))));
             this.label3.Font = new System.Drawing.Font("Century Gothic", 17.75F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
-            this.label3.Location = new System.Drawing.Point(582, 224);
+            this.label3.Location = new System.Drawing.Point(583, 224);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 30);
             this.label3.TabIndex = 15;
@@ -180,7 +180,7 @@ namespace LibbyLoopAdmin
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(205)))), ((int)(((byte)(209)))));
             this.pictureBox6.BackgroundImage = global::LibbyLoopAdmin.Properties.Resources.userIcon;
-            this.pictureBox6.Location = new System.Drawing.Point(572, 121);
+            this.pictureBox6.Location = new System.Drawing.Point(569, 121);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(100, 100);
             this.pictureBox6.TabIndex = 8;

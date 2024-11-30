@@ -14,7 +14,6 @@ namespace LibbyLoopAdmin
     public partial class Form1 : Form
     {
 
-
         //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
         private bool Drag;
         private int MouseX;
@@ -114,12 +113,18 @@ namespace LibbyLoopAdmin
         //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
 
 
-        public Form1()
+
+
+        private int UserId;//from login
+        public Form1(int userId)
         {
             InitializeComponent();
 
+            UserId = userId; // in-assign userId from login as UserId
+
             editBookUC1.DataSaved += (sender, e) => { addBookUC1.RefreshGrid(); }; //(rik)
             addBookUC1.DataSaved += (sender, e) => { editBookUC1.RefreshGrid(); }; //(rik) para to ma refresh yung tables sa edit if nag add and viceversa---https://stackoverflow.com/questions/44519437/c-sharp-refresh-datagridview-of-another-usercontrol-after-inserting-data-in-anot
+
 
             //DATABEST CONNECTION TEST--------------------------------------------------------------------------------------------
             string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
@@ -127,7 +132,7 @@ namespace LibbyLoopAdmin
             try
             {
                 mySqlConnection.Open();
-                MessageBox.Show("connected successfully", "Database");
+                //MessageBox.Show("connected successfully", "Database");
             }
             catch (Exception ex)
             {
@@ -151,7 +156,7 @@ namespace LibbyLoopAdmin
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Homebtn_Click(object sender, EventArgs e)
@@ -309,25 +314,54 @@ namespace LibbyLoopAdmin
 
         private void Accountbtn_Click(object sender, EventArgs e)
         {
-            accountUC1.Show();
-            accountUC1.BringToFront();
+            string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
+            using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    mySqlConnection.Open();
 
-            addBookUC1.Hide();
-            homeUC1.Hide();
-            bookListUC1.Hide();
-            borrowedListUC1.Hide();
-            reserveUC1.Hide();
-            editBookUC1.Hide();
+                    string query = "SELECT userType FROM users WHERE id = @userId";
+                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", UserId);
+                        string userType = cmd.ExecuteScalar()?.ToString();
 
-            //btn color
-            Homebtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
-            Editbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
-            Addbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
-            Booklistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
-            Borrowedlistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
-            ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+                        if (userType == "Admin")
+                        {
+                            MessageBox.Show("Access Granted", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            Accountbtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+                            accountUC1.Show();
+                            accountUC1.BringToFront();
+
+                            addBookUC1.Hide();
+                            homeUC1.Hide();
+                            bookListUC1.Hide();
+                            borrowedListUC1.Hide();
+                            reserveUC1.Hide();
+                            editBookUC1.Hide();
+
+                            //btn color
+                            Homebtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+                            Editbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+                            Addbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+                            Booklistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+                            Borrowedlistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+                            ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+
+                            Accountbtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+                        }
+                        else
+                        {
+                            MessageBox.Show("You dont have previlege to access this control.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
 
@@ -338,7 +372,9 @@ namespace LibbyLoopAdmin
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-
+            Form5 mainForm = new Form5();
+            mainForm.Show();
+            this.Hide();
         }
     }
 }

@@ -146,7 +146,7 @@ namespace LibbyLoopAdmin
                 try
                 {
                     con.Open();
-                    string query = "SELECT COUNT(*) FROM users WHERE username = @username AND password = @password";
+                    string query = "SELECT id FROM users WHERE username = @username AND password = @password";
                     MySqlCommand cmd = new MySqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@username", textBox1.Text);
                     cmd.Parameters.AddWithValue("@password", passBox.Text);
@@ -155,8 +155,9 @@ namespace LibbyLoopAdmin
 
                     if (result > 0)
                     {
-                        MessageBox.Show("Login Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Form1 mainForm = new Form1();
+                        int userId = Convert.ToInt32(result);
+                        //MessageBox.Show("Login Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Form1 mainForm = new Form1(userId);
                         mainForm.Show();
                         this.Hide();
                     }

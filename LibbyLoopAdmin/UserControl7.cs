@@ -231,24 +231,31 @@ namespace LibbyLoopAdmin
                 {
                     mySqlConnection.Open();
 
-                    string query = "DELETE FROM users WHERE id = @id";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
+                    if(selectedUserId == 1) // ginanto ko nalang yoko na mag pasa dito ng valuye HAHHWH 
                     {
-                        cmd.Parameters.AddWithValue("@id", selectedUserId);
+                        MessageBox.Show("You can't delete the main admin account!");
+                    }
+                    else
+                    {
+                        string query = "DELETE FROM users WHERE id = @id";
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
                         {
-                            MessageBox.Show("User Deleted successfully.", "Success");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Can't delete user data. Please check if the record exists.", "Error");
-                        }
+                            cmd.Parameters.AddWithValue("@id", selectedUserId);
 
-                        listContent();
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("User Deleted successfully.", "Success");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Can't delete user data. Please check if the record exists.", "Error");
+                            }
+
+                            listContent();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -257,5 +264,6 @@ namespace LibbyLoopAdmin
                 }
             }
         }
+
     }
 }
