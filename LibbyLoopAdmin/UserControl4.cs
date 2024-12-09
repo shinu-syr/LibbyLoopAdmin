@@ -22,7 +22,7 @@ namespace LibbyLoopAdmin
             dataGridView1.CellClick += dataGridView1_CellClick;
             this.VisibleChanged += new EventHandler(UserControl4_VisibleChanged);
             LoadBooksData();
-
+            UpdateCategoryComboBox();
 
         }
     
