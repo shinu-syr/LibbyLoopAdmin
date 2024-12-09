@@ -18,12 +18,14 @@ namespace LibbyLoopAdmin
             InitializeComponent();
             this.Load += new EventHandler(this.ReserveUC_Load);
             this.VisibleChanged += new EventHandler(ReserveUC_VisibleChanged);
+            isBookUnclaimed();
             LoadBorrowedBooks();
         }
         private void ReserveUC_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)
             {
+                isBookUnclaimed();
                 LoadBorrowedBooks();
             }
 
@@ -152,9 +154,62 @@ namespace LibbyLoopAdmin
         {
 
         }
+        private void isBookUnclaimed()
+        {
+            try
+            {
+                string connectionString = "SERVER=localhost; DATABASE=libbyloop; UID=root; PASSWORD=;";
+                using (MySqlConnection con = new MySqlConnection(connectionString))
+                {
+                    con.Open();
+                    string selectQuery = @" SELECT bIsbn FROM reservation_info WHERE claim_date < CURDATE()";
 
+                    using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, con))
+                    using (MySqlDataReader reader = selectCmd.ExecuteReader())
+                    {
+                        List<string> unclaimedBooks = new List<string>();
+
+                        while (reader.Read())
+                        {
+                            unclaimedBooks.Add(reader["bIsbn"].ToString());
+                        }
+
+                        reader.Close();
+
+                        if (unclaimedBooks.Count > 0)
+                        {
+                            foreach (string isbn in unclaimedBooks)
+                            {
+
+                                string updateQuery = "UPDATE newbook SET bAvailability = 1 WHERE bIsbn = @isbn";
+                                using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, con))
+                                {
+                                    updateCmd.Parameters.AddWithValue("@isbn", isbn);
+                                    updateCmd.ExecuteNonQuery();
+                                }
+
+
+                                string deleteQuery = "DELETE FROM reservation_info WHERE bIsbn = @isbn";
+                                using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, con))
+                                {
+                                    deleteCmd.Parameters.AddWithValue("@isbn", isbn);
+                                    deleteCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            MessageBox.Show("Unclaimed reservations have been returned to the book list.", "Unclaimed Reservations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while processing unclaimed reservations: " + ex.Message);
+            }
+        }
         private void ReserveUC_Load(object sender, EventArgs e)
         {
+            isBookUnclaimed();
             LoadBorrowedBooks();
                
         }
