@@ -119,7 +119,8 @@ namespace LibbyLoopAdmin
         //eto code ni login
         public Form5()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            passBox.PasswordChar = '•';
         }
 
         private void Form5_Load(object sender, EventArgs e)
@@ -175,7 +176,7 @@ namespace LibbyLoopAdmin
 
         private void passBox_TextChanged(object sender, EventArgs e)
         {
-            passBox.PasswordChar = '•';
+            
         }
     }
 }

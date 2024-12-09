@@ -273,6 +273,16 @@ namespace LibbyLoopAdmin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Group_59 {
+            get {
+                object obj = ResourceManager.GetObject("Group 59", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Homeicon {
             get {
                 object obj = ResourceManager.GetObject("Homeicon", resourceCulture);

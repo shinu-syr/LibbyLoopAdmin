@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -163,6 +164,59 @@ namespace LibbyLoopAdmin
         public void RefreshGrid()//from form1 para ma reload datatable sa edit and viceversa
         {
             listContent();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            SearchBooks(txtSearch.Text);
+        }
+
+        private void SearchBooks(string searchTerm)
+        {
+            try
+            {
+                string connectionString = "SERVER=localhost; DATABASE=libbyloop; UID=root; PASSWORD=;";
+                using (MySqlConnection con = new MySqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    string query = "SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability, bImage FROM newbook";
+                    bool hasSearchFilter = !string.IsNullOrWhiteSpace(searchTerm);
+
+                    if (hasSearchFilter)
+                    {
+                        query += " WHERE";
+                        List<string> conditions = new List<string>();
+
+                        if (hasSearchFilter)
+                        {
+                            conditions.Add(" (bTitle LIKE @SearchTerm OR bIsbn LIKE @SearchTerm OR bAuthor LIKE @SearchTerm OR bCategory LIKE @SearchTerm)");
+                        }
+
+                        query += string.Join(" AND", conditions);
+                    }
+
+                    query += " ORDER BY bTitle ASC";
+
+                    MySqlCommand cmd = new MySqlCommand(query, con);
+
+                    if (hasSearchFilter)
+                    {
+                        cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+                    }
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    BookList.DataSource = ds.Tables[0];
+
+                    BookList.Columns["bImage"].Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while searching for books: " + ex.Message);
+            }
         }
     }
 }
