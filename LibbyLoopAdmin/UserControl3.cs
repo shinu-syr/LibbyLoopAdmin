@@ -267,7 +267,7 @@ namespace LibbyLoopAdmin
                 {
                     con.Open();
 
-                    string query = "SELECT bTitle, bIsbn, bAuthor, bCategory, bImage FROM newbook";
+                    string query = "SELECT bLibid, bTitle, bAuthor, bIsbn, bCategory, bImage FROM newbook";
                     bool hasSearchFilter = !string.IsNullOrWhiteSpace(searchTerm);
 
                     if (hasSearchFilter)
