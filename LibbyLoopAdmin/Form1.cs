@@ -13,11 +13,14 @@ namespace LibbyLoopAdmin
 {
     public partial class Form1 : Form
     {
-
+        
         //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
         private bool Drag;
         private int MouseX;
         private int MouseY;
+
+        private BookListUC categoryControl;
+        private AddBookUC addBookControl;
 
         private const int WM_NCHITTEST = 0x84;
         private const int HTCLIENT = 0x1;
@@ -119,7 +122,6 @@ namespace LibbyLoopAdmin
         public Form1(int userId)
         {
             InitializeComponent();
-
             UserId = userId; // in-assign userId from login as UserId
 
             editBookUC1.DataSaved += (sender, e) => { addBookUC1.RefreshGrid(); }; //(rik)

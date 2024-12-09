@@ -11,11 +11,14 @@ namespace LibbyLoopAdmin
 {
     public partial class AddBookUC : UserControl
     {
+
+     
         public AddBookUC()
         {
             InitializeComponent();
+   
         }
-
+        public event EventHandler BookAdded;
         private void UserControl1_Load(object sender, EventArgs e)
         {
             listContent();
@@ -82,6 +85,8 @@ namespace LibbyLoopAdmin
 
                         cmd.ExecuteNonQuery();
                     }
+
+                    BookAdded?.Invoke(this, EventArgs.Empty);
 
                     MessageBox.Show("Book added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

@@ -45,6 +45,7 @@
             this.editBookUC1 = new LibbyLoopAdmin.EditBookUC();
             this.bookListUC1 = new LibbyLoopAdmin.BookListUC();
             this.borrowedListUC1 = new LibbyLoopAdmin.BorrowedListUC();
+
             this.reserveUC1 = new LibbyLoopAdmin.ReserveUC();
             this.accountUC1 = new LibbyLoopAdmin.AccountUC();
             this.panel1.SuspendLayout();

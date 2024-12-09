@@ -10,6 +10,8 @@ namespace LibbyLoopAdmin
 {
     public partial class BookListUC : UserControl
     {
+    
+
         public BookListUC()
         {
             InitializeComponent();
@@ -20,8 +22,46 @@ namespace LibbyLoopAdmin
             dataGridView1.CellClick += dataGridView1_CellClick;
             this.VisibleChanged += new EventHandler(UserControl4_VisibleChanged);
             LoadBooksData();
-        }
 
+
+        }
+    
+        private void UpdateCategoryComboBox()
+        {
+            cbSearchCateg.Items.Clear();
+            cbSearchCateg.Items.Add("All Categories");
+
+            
+            string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
+
+            using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    mySqlConnection.Open();
+                    string query = "SELECT DISTINCT bCategory FROM newbook";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
+                    {
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string category = reader.GetString("bCategory");
+                                if (!cbSearchCateg.Items.Contains(category))
+                                {
+                                    cbSearchCateg.Items.Add(category);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while updating categories: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             SearchBooks(txtSearch.Text, cbSearchCateg.SelectedItem?.ToString());
@@ -29,6 +69,7 @@ namespace LibbyLoopAdmin
 
         private void LoadBooksData()
         {
+            UpdateCategoryComboBox();
             try
             {
                 string connectionString = "SERVER=localhost; DATABASE=libbyloop; UID=root; PASSWORD=;";
