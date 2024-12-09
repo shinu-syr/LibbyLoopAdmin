@@ -178,6 +178,16 @@ namespace LibbyLoopAdmin
         {
             
         }
+
+
+        //eznext
+        private void passBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoginBtn.PerformClick();
+            }
+        }
     }
 }
 
