@@ -70,6 +70,7 @@ namespace LibbyLoopAdmin
         private void LoadBooksData()
         {
             UpdateCategoryComboBox();
+
             try
             {
                 string connectionString = "SERVER=localhost; DATABASE=libbyloop; UID=root; PASSWORD=;";
