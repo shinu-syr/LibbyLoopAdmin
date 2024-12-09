@@ -51,10 +51,9 @@ namespace LibbyLoopAdmin
 
         decimal change = amountPaid - totalAmount;
 
-
         IsPaymentComplete = true;
   
-        MessageBox.Show($"Payment successful! Change: {change:C2}", "Payment Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show($"Payment successful! Change: ₱{change:N2}", "Payment Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
  
         this.Close();

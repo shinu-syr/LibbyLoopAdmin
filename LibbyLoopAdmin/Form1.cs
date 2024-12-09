@@ -158,7 +158,36 @@ namespace LibbyLoopAdmin
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
+            using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    mySqlConnection.Open();
+
+                    string query = "SELECT userType FROM users WHERE id = @userId";
+                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", UserId);
+                        string userType = cmd.ExecuteScalar()?.ToString();
+
+                        if (userType == "Admin")
+                        {
+                            Accountbtn.Enabled = true;
+                            Accountbtn.Visible = true;
+                        }
+                        else
+                        {
+                            Accountbtn.Enabled = false;
+                            Accountbtn.Visible = false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void Homebtn_Click(object sender, EventArgs e)
@@ -331,8 +360,6 @@ namespace LibbyLoopAdmin
 
                         if (userType == "Admin")
                         {
-                            MessageBox.Show("Access Granted", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                             accountUC1.Show();
                             accountUC1.BringToFront();
 
@@ -352,10 +379,6 @@ namespace LibbyLoopAdmin
                             ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
 
                             Accountbtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
-                        }
-                        else
-                        {
-                            MessageBox.Show("You dont have previlege to access this control.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }

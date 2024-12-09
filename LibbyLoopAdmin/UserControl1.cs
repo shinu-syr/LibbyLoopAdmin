@@ -131,7 +131,7 @@ namespace LibbyLoopAdmin
                 {
                     mySqlConnection.Open();
 
-                    string query = "SELECT bLibid, bTitle, bAuthor, bIsbn, bCategory FROM newbook";
+                    string query = "SELECT bLibid, bTitle, bAuthor, bIsbn, bCategory FROM newbook ORDER BY bTitle ASC";
                     MySqlDataAdapter da = new MySqlDataAdapter(query, mySqlConnection);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -185,7 +185,7 @@ namespace LibbyLoopAdmin
                 {
                     con.Open();
 
-                    string query = "SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability, bImage FROM newbook";
+                    string query = "SELECT bTitle, bIsbn, bAuthor, bCategory, bImage FROM newbook";
                     bool hasSearchFilter = !string.IsNullOrWhiteSpace(searchTerm);
 
                     if (hasSearchFilter)

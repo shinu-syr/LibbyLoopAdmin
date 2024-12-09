@@ -104,7 +104,7 @@ namespace LibbyLoopAdmin
                     }
                     dataGridView1.Columns["bImage"].Visible = false;
                    
-                    dataGridView1.RowHeadersWidth = 21; // yung default selector sa left banda
+                    dataGridView1.RowHeadersWidth = 21; 
                     dataGridView1.Refresh();
 
                 }
@@ -200,9 +200,9 @@ namespace LibbyLoopAdmin
                     MySqlCommand cmd = new MySqlCommand("SELECT bImage FROM newbook WHERE bIsbn = @Isbn", con);
                     cmd.Parameters.AddWithValue("@Isbn", isbn);
 
-                    byte[] imageBytes = (byte[])cmd.ExecuteScalar();
+                    object result = cmd.ExecuteScalar();
 
-                    if (imageBytes != null)
+                    if (result != null && result is byte[] imageBytes)
                     {
                         using (MemoryStream ms = new MemoryStream(imageBytes))
                         {
@@ -222,6 +222,16 @@ namespace LibbyLoopAdmin
                 MessageBox.Show("An error occurred while loading the image: " + ex.Message);
             }
         }
+
+        private byte[] ConvertImageToBytes(Image image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
