@@ -15,8 +15,9 @@ namespace LibbyLoopAdmin
         public BookListUC()
         {
             InitializeComponent();
-            cbSearchCateg.Items.Insert(0, "All Categories");
+            cbSearchCateg.Items.Add("All Categories");
             cbSearchCateg.SelectedIndex = 0;
+
             txtSearch.TextChanged += TxtSearch_TextChanged;
             cbSearchCateg.SelectedIndexChanged += cbSearchCateg_SelectedIndexChanged;
             dataGridView1.CellClick += dataGridView1_CellClick;
@@ -25,13 +26,11 @@ namespace LibbyLoopAdmin
             UpdateCategoryComboBox();
 
         }
-    
         private void UpdateCategoryComboBox()
         {
             cbSearchCateg.Items.Clear();
             cbSearchCateg.Items.Add("All Categories");
 
-            
             string mysqlCon = "server=127.0.0.1; user=root; database=libbyloop; password=";
 
             using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
@@ -48,10 +47,7 @@ namespace LibbyLoopAdmin
                             while (reader.Read())
                             {
                                 string category = reader.GetString("bCategory");
-                                if (!cbSearchCateg.Items.Contains(category))
-                                {
-                                    cbSearchCateg.Items.Add(category);
-                                }
+                                cbSearchCateg.Items.Add(category);
                             }
                         }
                     }
@@ -61,10 +57,81 @@ namespace LibbyLoopAdmin
                     MessageBox.Show("An error occurred while updating categories: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            cbSearchCateg.SelectedIndex = 0; 
         }
+
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             SearchBooks(txtSearch.Text, cbSearchCateg.SelectedItem?.ToString());
+        }
+        private List<DataRow> MergeSort(List<DataRow> rows)
+        {
+            if (rows.Count <= 1)
+                return rows;
+
+            int mid = rows.Count / 2;
+            List<DataRow> left = rows.GetRange(0, mid);
+            List<DataRow> right = rows.GetRange(mid, rows.Count - mid);
+
+            left = MergeSort(left);
+            right = MergeSort(right);
+
+            return Merge(left, right);
+        }
+
+        private List<DataRow> Merge(List<DataRow> left, List<DataRow> right)
+        {
+            List<DataRow> result = new List<DataRow>();
+            int i = 0, j = 0;
+
+            while (i < left.Count && j < right.Count)
+            {
+                string titleLeft = left[i]["bTitle"].ToString();
+                string titleRight = right[j]["bTitle"].ToString();
+
+                if (string.Compare(titleLeft, titleRight, StringComparison.OrdinalIgnoreCase) <= 0)
+                {
+                    result.Add(left[i]);
+                    i++;
+                }
+                else
+                {
+                    result.Add(right[j]);
+                    j++;
+                }
+            }
+
+            while (i < left.Count)
+            {
+                result.Add(left[i]);
+                i++;
+            }
+            while (j < right.Count)
+            {
+                result.Add(right[j]);
+                j++;
+            }
+
+            return result;
+        }
+
+        private void SortBooksByTitleUsingMergeSort(DataTable dataTable)
+        {
+          
+            List<DataRow> rows = new List<DataRow>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                rows.Add(row);
+            }
+
+            List<DataRow> sortedRows = MergeSort(rows);
+
+            dataTable.Rows.Clear();
+            foreach (DataRow row in sortedRows)
+            {
+                dataTable.ImportRow(row);
+            }
         }
 
         private void LoadBooksData()
@@ -77,36 +144,25 @@ namespace LibbyLoopAdmin
                 using (MySqlConnection con = new MySqlConnection(connectionString))
                 {
                     con.Open();
-                    MySqlDataAdapter da = new MySqlDataAdapter("SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability, bImage FROM newbook ORDER BY bTitle ASC", con);
+                    MySqlDataAdapter da = new MySqlDataAdapter("SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability, bImage FROM newbook", con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
+                    DataTable bookTable = ds.Tables[0];
+         
+                    SortBooksByTitleUsingMergeSort(bookTable);
+
+                    dataGridView1.DataSource = bookTable;
 
                     dataGridView1.Columns["bTitle"].HeaderText = "Title";
                     dataGridView1.Columns["bIsbn"].HeaderText = "ISBN";
                     dataGridView1.Columns["bAuthor"].HeaderText = "Author";
                     dataGridView1.Columns["bCategory"].HeaderText = "Category";
                     dataGridView1.Columns["bAvailability"].HeaderText = "Stocks";
-                    if (!(dataGridView1.Columns["bAvailability"] is DataGridViewCheckBoxColumn))
-                    {
-                        DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn
-                        {
-                            DataPropertyName = "bAvailability",
-                            Name = "bAvailability",
-                            HeaderText = "Stocks",
-                            TrueValue = true,
-                            FalseValue = false
-                        };
-
-                        int columnIndex = dataGridView1.Columns["bAvailability"].Index;
-                        dataGridView1.Columns.RemoveAt(columnIndex);
-                        dataGridView1.Columns.Insert(columnIndex, checkBoxColumn);
-                    }
                     dataGridView1.Columns["bImage"].Visible = false;
-                   
-                    dataGridView1.RowHeadersWidth = 21; 
-                    dataGridView1.Refresh();
 
+                    dataGridView1.RowHeadersWidth = 21;
+                    dataGridView1.Refresh();
+                    SearchBooks(string.Empty, "All Categories");
                 }
             }
             catch (Exception ex)
@@ -114,6 +170,7 @@ namespace LibbyLoopAdmin
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
+
 
         private void UserControl4_VisibleChanged(object sender, EventArgs e)
         {
@@ -125,6 +182,7 @@ namespace LibbyLoopAdmin
         }
         private void UserControl4_Load(object sender, EventArgs e)
         {
+            cbSearchCateg.SelectedIndex = 0;
             LoadBooksData();
             dataGridView1.Refresh();
         }
@@ -139,7 +197,7 @@ namespace LibbyLoopAdmin
                     con.Open();
 
                     string query = "SELECT bTitle, bIsbn, bAuthor, bCategory, bAvailability, bImage FROM newbook";
-                    bool hasCategoryFilter = selectedCategory != "All Categories";
+                    bool hasCategoryFilter = !string.IsNullOrEmpty(selectedCategory) && selectedCategory != "All Categories";
                     bool hasSearchFilter = !string.IsNullOrWhiteSpace(searchTerm);
 
                     if (hasCategoryFilter || hasSearchFilter)
@@ -177,9 +235,9 @@ namespace LibbyLoopAdmin
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
 
-                    dataGridView1.Columns["bImage"].Visible = false; 
+                    dataGridView1.DataSource = ds.Tables[0];
+                    dataGridView1.Columns["bImage"].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -187,6 +245,7 @@ namespace LibbyLoopAdmin
                 MessageBox.Show("An error occurred while searching for books: " + ex.Message);
             }
         }
+
 
         private void LoadImage(string isbn)
         {

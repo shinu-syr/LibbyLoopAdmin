@@ -69,6 +69,7 @@
             this.cbSearchCateg.Name = "cbSearchCateg";
             this.cbSearchCateg.Size = new System.Drawing.Size(187, 23);
             this.cbSearchCateg.TabIndex = 7;
+            this.cbSearchCateg.SelectedIndexChanged += new System.EventHandler(this.cbSearchCateg_SelectedIndexChanged);
             // 
             // txtSearch
             // 

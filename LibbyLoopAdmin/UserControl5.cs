@@ -162,7 +162,7 @@ namespace LibbyLoopAdmin
                 using (MySqlConnection con = new MySqlConnection(connectionString))
                 {
                     con.Open();
-                    string selectQuery = @" SELECT bIsbn FROM reservation_info WHERE claim_date < CURDATE()";
+                    string selectQuery = @"SELECT bIsbn FROM reservation_info WHERE claim_date < CURDATE()";
 
                     using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, con))
                     using (MySqlDataReader reader = selectCmd.ExecuteReader())
