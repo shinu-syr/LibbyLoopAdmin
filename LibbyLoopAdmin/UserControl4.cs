@@ -65,72 +65,73 @@ namespace LibbyLoopAdmin
         {
             SearchBooks(txtSearch.Text, cbSearchCateg.SelectedItem?.ToString());
         }
+
         private List<DataRow> MergeSort(List<DataRow> rows)
         {
-            if (rows.Count <= 1)
-                return rows;
+            if (rows.Count <= 1) //this is base case, so dito chinecheck kung 0 element or 1 this means sorted na siya
+                return rows; // ibabalik ung row as is kase sorted na this line only occurs 1 sa unang call lng sa merge sort
 
-            int mid = rows.Count / 2;
-            List<DataRow> left = rows.GetRange(0, mid);
-            List<DataRow> right = rows.GetRange(mid, rows.Count - mid);
+            int mid = rows.Count / 2; //mid eto ung nagchecheck ng midpoint or ung gitna ng row para madivide sila into 2 halves
+            List<DataRow> left = rows.GetRange(0, mid); //dito kinukuha ung left so titignan nya ung mula sa left papuntang gitna un ung left halve
+            List<DataRow> right = rows.GetRange(mid, rows.Count - mid); //dito naman right naman so middle to the last 
 
-            left = MergeSort(left);
-            right = MergeSort(right);
+            left = MergeSort(left);//dito ung left na half ididivide ulit ng ididivide or recurssing through all the element para maging single element sila 
+            right = MergeSort(right);//so goes here but right naman
 
-            return Merge(left, right);
+            return Merge(left, right);//after matapos na maging single element lahat papasok naman sa merge
         }
 
         private List<DataRow> Merge(List<DataRow> left, List<DataRow> right)
         {
-            List<DataRow> result = new List<DataRow>();
+            List<DataRow> result = new List<DataRow>();//eto ung hahawak ng final sorted na list
             int i = 0, j = 0;
 
             while (i < left.Count && j < right.Count)
             {
-                string titleLeft = left[i]["bTitle"].ToString();
-                string titleRight = right[j]["bTitle"].ToString();
+                string titleLeft = left[i]["bTitle"].ToString();//to kukuhain ung title sa left
+                string titleRight = right[j]["bTitle"].ToString();//to kukuhain ung title sa right
 
                 if (string.Compare(titleLeft, titleRight, StringComparison.OrdinalIgnoreCase) <= 0)
                 {
-                    result.Add(left[i]);
-                    i++;
+                    result.Add(left[i]); //pagmas maliit ung title sa left ipapasok ung left sa list ng sorted list
+                    i++;//move sa next element
                 }
                 else
                 {
-                    result.Add(right[j]);
-                    j++;
+                    result.Add(right[j]); //pagmas maliit ung title sa right iapapasok ung right sa list 
+                    j++;//move sa next element
                 }
             }
-
             while (i < left.Count)
             {
-                result.Add(left[i]);
-                i++;
+                result.Add(left[i]);//pagmay natira pang item na di macompare sa kahit ano ipapasok na siya
+                i++;//move sa next element
             }
+         
             while (j < right.Count)
             {
-                result.Add(right[j]);
-                j++;
+                result.Add(right[j]);//pagmay natira pang item na di macompare sa kahit ano ipapasok na sa list
+                j++;//move sa next element
             }
 
-            return result;
+            return result;//papasa nato sa Sorted
         }
 
         private void SortBooksByTitleUsingMergeSort(DataTable dataTable)
         {
           
-            List<DataRow> rows = new List<DataRow>();
+            List<DataRow> rows = new List<DataRow>();//gawa ng list for the rows
             foreach (DataRow row in dataTable.Rows)
             {
-                rows.Add(row);
+                rows.Add(row);//each laman ng datatable papasok sa row parang copy lng
             }
 
-            List<DataRow> sortedRows = MergeSort(rows);
+            List<DataRow> sortedRows = MergeSort(rows);//pasok sa merge sort
 
-            dataTable.Rows.Clear();
+            dataTable.Rows.Clear();//clear ung laman ng row para mapasok ung bago na sorted
             foreach (DataRow row in sortedRows)
             {
-                dataTable.ImportRow(row);
+                dataTable.ImportRow(row);//import or pasok na sa table 
             }
         }
 
@@ -203,7 +204,7 @@ namespace LibbyLoopAdmin
                     if (hasCategoryFilter || hasSearchFilter)
                     {
                         query += " WHERE";
-                        List<string> conditions = new List<string>();
+                        List<string> conditions = new List<string>(); 
 
                         if (hasCategoryFilter)
                         {

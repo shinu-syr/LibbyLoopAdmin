@@ -53,7 +53,6 @@ namespace LibbyLoopAdmin
                     dataGridView1.Columns["college"].Visible = false;
                     dataGridView1.Columns["user_type"].Visible = false;
 
-                    // Resize columns automatically
                     dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                 }
