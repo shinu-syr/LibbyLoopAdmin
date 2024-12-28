@@ -204,7 +204,7 @@ namespace LibbyLoopAdmin
             reserveUC1.Hide();
             accountUC1.Hide();
 
-            //btn pressed
+
             Homebtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
 
             //btn unpressed
