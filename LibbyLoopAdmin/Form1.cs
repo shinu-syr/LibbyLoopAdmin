@@ -14,7 +14,7 @@ namespace LibbyLoopAdmin
     public partial class Form1 : Form
     {
         
-        //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
+        //ka emehan lang, pang shadow sa frame tas para magalawgalaw----------------------------------------
         private bool Drag;
         private int MouseX;
         private int MouseY;
@@ -113,7 +113,7 @@ namespace LibbyLoopAdmin
             }
         }
         private void PanelMove_MouseUp(object sender, MouseEventArgs e) { Drag = false; }
-        //ka emehan lang, pang shadow sa frame tas para magalawgalaw from google yung code----------------------------------------
+        //ka emehan lang, pang shadow sa frame tas para magalawgalaw----------------------------------------
 
 
 
@@ -125,7 +125,7 @@ namespace LibbyLoopAdmin
             UserId = userId; // in-assign userId from login as UserId
 
             editBookUC1.DataSaved += (sender, e) => { addBookUC1.RefreshGrid(); }; //(rik)
-            addBookUC1.DataSaved += (sender, e) => { editBookUC1.RefreshGrid(); }; //(rik) para to ma refresh yung tables sa edit if nag add and viceversa---https://stackoverflow.com/questions/44519437/c-sharp-refresh-datagridview-of-another-usercontrol-after-inserting-data-in-anot
+            addBookUC1.DataSaved += (sender, e) => { editBookUC1.RefreshGrid(); }; //(rik) para to ma refresh yung tables sa edit if nag add and viceversa
 
 
             //DATABEST CONNECTION TEST--------------------------------------------------------------------------------------------

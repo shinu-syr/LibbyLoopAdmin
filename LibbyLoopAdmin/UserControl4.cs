@@ -175,7 +175,7 @@ namespace LibbyLoopAdmin
 
         private void UserControl4_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible) //this ba na tinutukoy here yung uc
+            if (this.Visible) 
             {
                 LoadBooksData();
             }
