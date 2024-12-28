@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-
-//This is the palantandaan na this is the final branch ng project naten
 namespace LibbyLoopAdmin
 {
     public partial class Form1 : Form
@@ -194,7 +192,26 @@ namespace LibbyLoopAdmin
 
         private void Homebtn_Click(object sender, EventArgs e)
         {
+            homeUC1.Show();
+            homeUC1.BringToFront();
 
+            addBookUC1.Hide();
+            editBookUC1.Hide();
+            bookListUC1.Hide();
+            borrowedListUC1.Hide();
+            reserveUC1.Hide();
+            accountUC1.Hide();
+
+            //btn pressed
+            Homebtn.BackColor = Color.FromArgb(183, 149, 105); // may kulay
+
+            //btn unpressed
+            Addbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Editbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Booklistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Borrowedlistbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            ReservationBtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
+            Accountbtn.BackColor = Color.FromArgb(204, 166, 117); // walang kulay
 
         }
 
